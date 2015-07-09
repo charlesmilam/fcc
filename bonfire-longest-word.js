@@ -2,11 +2,11 @@ function findLongestWord(str) {;
     var ary = str.split(" ");
     console.log("ary: " + ary);
     var longest = ary.reduce(function(a, b){
-      console.log("a: " + a.length);
-      console.log("b: " + b.length);
-      return a.length > b.length ? a.length  : b.length;
+      console.log("a: " + a);
+      console.log("b: " + b);
+      return a.length > b.length ? a  : b;
     });
-    return longest;
+    return longest.length;
 }
 
 console.log(findLongestWord('The quick brown fox jumped over the lazy dog'));
