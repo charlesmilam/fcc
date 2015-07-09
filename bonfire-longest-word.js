@@ -3,7 +3,7 @@ function findLongestWord(str) {;
     var longest = ary.reduce(function(a, b){
       return a.length > b.length ? a  : b;
     });
-    
+
     return longest.length;
 }
 
