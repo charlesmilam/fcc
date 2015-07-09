@@ -1,9 +1,8 @@
 function palindrome(str) {
     str = str.toLowerCase().replace(/\.|,/g, " ").split(" ").join("");
-    console.log("str after replace: " + str);
+
     var ary = str.split("").reverse().join("");
-    console.log("ary: " + ary);
-    console.log("str: " + str);
+    
     if (ary === str) {
       return true;
     }
