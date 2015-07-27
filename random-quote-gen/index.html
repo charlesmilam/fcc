@@ -6,19 +6,27 @@
     <title>Random Movie Quote Generator | FCC | Charles Milam</title>
   </head>
   <body>
+    <p class="quote-text">
+      Test
+    </p>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript">
-    $.ajax({
-      url: "https://andruxnet-random-famous-quotes.p.mashape.com/cat=movies", // The URL to the API. You can get this by clicking on "Show CURL example" from an API profile
-      type: "Post", // The HTTP Method
-      data: {}, // Additional parameters here
-      datatype: 'json',
-      success: function(data) { alert(JSON.stringify(data)); },
-      error: function(err) { alert(err); },
-      beforeSend: function(xhr) {
-      xhr.setRequestHeader("X-Mashape-Authorization", "VeyXpOktQ4msh7cDFWQegB1gND0np1YHmmojsn0xKuqBTg6DAb"); // Enter here your Mashape key
-      }
-});
+      $.ajax({
+        url: "https://andruxnet-random-famous-quotes.p.mashape.com/cat=movies",
+        type: "Post",
+        data: {},
+        datatype: 'json',
+        success: function(data) {
+          var quote = JSON.parse(data);
+          console.log(data);
+          console.log(quote.quote);
+          $(".quote-text").text(quote.quote);
+        },
+        error: function(err) { alert(err); },
+        beforeSend: function(xhr) {
+        xhr.setRequestHeader("X-Mashape-Authorization", "VeyXpOktQ4msh7cDFWQegB1gND0np1YHmmojsn0xKuqBTg6DAb");
+        }
+      });
     </script>
   </body>
 </html>
