@@ -1,0 +1,37 @@
+/* line 106, ../../../../.rvm/gems/ruby-2.2.1/gems/compass-core-1.0.3/stylesheets/compass/typography/_vertical_rhythm.scss */
+html {
+  font-size: 100%;
+  line-height: 1.5em;
+}
+
+/* line 8, ../sass/style.scss */
+body {
+  background-color: #eaeaea;
+  background: url("../images/hollywood_sign_by_ilove-d2y4qfp.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
+}
+
+/* line 17, ../sass/style.scss */
+.title {
+  text-align: center;
+}
+
+/* line 20, ../sass/style.scss */
+.quote-container {
+  text-align: center;
+}
+
+/* line 23, ../sass/style.scss */
+.btn {
+  background-color: transparent;
+  border: 2px solid #ffffff;
+}
+
+/* line 27, ../sass/style.scss */
+.copyright {
+  text-align: center;
+}

@@ -5,26 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Random Movie Quote Generator | FCC | Charles Milam</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./stylesheets/style.css" media="screen">
   </head>
   <body>
-    <p class="quote-text">
-      Test
-    </p>
+    <header>
+      <div class="row">
+        <div class="col-sm-12 title">
+          <h1>Random Movie Quotes</h1>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="quote-container">
+            <p class="quote-text"></p>
+            <p class="movie"></p>
+            <a class="btn btn-default btn-lg" href="#">Get Quote</a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="copyright">
+            <p>&copy; 2015 charles milam</p>
+            <p>
+              background image by <a href="http://fav.me/d2y4qfp" target="_blank">ilove</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript">
-      $.ajax({
-        url: "https://andruxnet-random-famous-quotes.p.mashape.com/cat=movies",
-        type: "Post",
-        data: {},
-        datatype: 'json',
-        success: function(data) {
-          var quoteText = JSON.parse(data);
-          console.log(data);
-          $(".quote-text").text(quoteText.quote);
-        },
-        error: function(err) { alert(err); },
-        beforeSend: function(xhr) {
-        xhr.setRequestHeader("X-Mashape-Authorization", "VeyXpOktQ4msh7cDFWQegB1gND0np1YHmmojsn0xKuqBTg6DAb");
+      $(document).ready(function() {
+        $(".btn").click(function() {
+          getQuote();
+        });
+        function getQuote() {
+          $.ajax({
+            url: "https://andruxnet-random-famous-quotes.p.mashape.com/cat=movies",
+            type: "Post",
+            data: {},
+            datatype: 'json',
+            success: function(data) {
+              var quoteText = JSON.parse(data);
+              console.log(data);
+              $(".quote-text").text(quoteText.quote);
+              $(".movie").text(quoteText.author);
+            },
+            error: function(err) { alert(err); },
+            beforeSend: function(xhr) {
+            xhr.setRequestHeader("X-Mashape-Authorization", "VeyXpOktQ4msh7cDFWQegB1gND0np1YHmmojsn0xKuqBTg6DAb");
+            }
+          });
         }
       });
     </script>

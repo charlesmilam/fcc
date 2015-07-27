@@ -1,0 +1,29 @@
+@import "compass";
+
+$base-font: "Roboto", "Helvetica", "Arial", sans-serif;
+$base-font-size: 16px;
+$base-line-height: 24px;
+@include establish-baseline;
+
+body {
+  background-color: #eaeaea;
+  background: url("../images/hollywood_sign_by_ilove-d2y4qfp.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
+}
+.title {
+  text-align: center;
+}
+.quote-container {
+  text-align: center;
+}
+.btn {
+  background-color: transparent;
+  border: 2px solid #ffffff;
+}
+.copyright {
+  text-align: center;
+}
