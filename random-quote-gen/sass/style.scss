@@ -1,24 +1,44 @@
 @import "compass";
+@import "compass/layout/sticky-footer";
 
+$base-primary-color: #eaeaea;
 $base-font: "Roboto", "Helvetica", "Arial", sans-serif;
-$base-font-size: 16px;
-$base-line-height: 24px;
+$base-font-size: 20px;
+$base-line-height: 30px;
 @include establish-baseline;
+@include sticky-footer(60px);
 
 body {
+  color: $base-primary-color;
+  font-size: $base-font-size;
   background-color: #eaeaea;
   background: url("../images/hollywood_sign_by_ilove-d2y4qfp.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  width: 100%;
+  &:after {
+    content: " ";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(32, 23, 19, 0.7);
+    background-image: linear-gradient(to bottom right, #201713, #201713);
+    @include opacity(0.7);
+    z-index: -1;
+  }
+}
+h1 {
+  font-size: 2em;
 }
 .title {
   text-align: center;
 }
 .quote-container {
   text-align: center;
+  margin: 2em auto;
 }
 .btn {
   background-color: transparent;
@@ -26,5 +46,8 @@ body {
   color: #ffffff;
 }
 .copyright {
+  color: #eaeaea;
+  font-size: 0.5em;
   text-align: center;
+  // padding-top: 5em;
 }
