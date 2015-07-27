@@ -2,7 +2,7 @@ function palindrome(str) {
     str = str.toLowerCase().replace(/\.|,/g, " ").split(" ").join("");
 
     var ary = str.split("").reverse().join("");
-    
+
     if (ary === str) {
       return true;
     }

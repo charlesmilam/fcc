@@ -1,7 +1,7 @@
 function titleCase(str) {
-  var ary = str.split(" ");
-  var newAry = ary.map(function(word){
-      return word.charAt(0).toUpperCase() + word.substr(1).toLowerCase();
+    var ary = str.split(" ");
+    var newAry = ary.map(function(word){
+    return word.charAt(0).toUpperCase() + word.substr(1).toLowerCase();
   });
   return newAry.join(" ");
 }
