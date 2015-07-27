@@ -17,10 +17,9 @@
         data: {},
         datatype: 'json',
         success: function(data) {
-          var quote = JSON.parse(data);
+          var quoteText = JSON.parse(data);
           console.log(data);
-          console.log(quote.quote);
-          $(".quote-text").text(quote.quote);
+          $(".quote-text").text(quoteText.quote);
         },
         error: function(err) { alert(err); },
         beforeSend: function(xhr) {
