@@ -54,8 +54,13 @@
             success: function(data) {
               var quoteText = JSON.parse(data);
               console.log(data);
-              $(".quote-text").text(quoteText.quote);
-              $(".movie").text(quoteText.author);
+              if (quoteText.category === "Movies") {
+                $(".quote-text").text(quoteText.quote);
+                $(".movie").text(quoteText.author);
+              }
+              else {
+                getQuote();
+              }
             },
             error: function(err) { alert(err); },
             beforeSend: function(xhr) {

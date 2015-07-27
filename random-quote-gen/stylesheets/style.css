@@ -29,9 +29,10 @@ body {
 .btn {
   background-color: transparent;
   border: 2px solid #ffffff;
+  color: #ffffff;
 }
 
-/* line 27, ../sass/style.scss */
+/* line 28, ../sass/style.scss */
 .copyright {
   text-align: center;
 }
