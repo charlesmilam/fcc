@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Random Movie Quote Generator | FCC | Charles Milam</title>
+  </head>
+  <body>
+    <p class="quote-text">
+      Test
+    </p>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+      $.ajax({
+        url: "https://andruxnet-random-famous-quotes.p.mashape.com/cat=movies",
+        type: "Post",
+        data: {},
+        datatype: 'json',
+        success: function(data) {
+          var quoteText = JSON.parse(data);
+          console.log(data);
+          $(".quote-text").text(quoteText.quote);
+        },
+        error: function(err) { alert(err); },
+        beforeSend: function(xhr) {
+        xhr.setRequestHeader("X-Mashape-Authorization", "VeyXpOktQ4msh7cDFWQegB1gND0np1YHmmojsn0xKuqBTg6DAb");
+        }
+      });
+    </script>
+  </body>
+</html>
