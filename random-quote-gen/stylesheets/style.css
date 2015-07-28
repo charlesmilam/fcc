@@ -40,7 +40,7 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
-/* line 20, ../sass/style.scss */
+/* line 22, ../sass/style.scss */
 body:after {
   content: " ";
   position: absolute;
@@ -55,30 +55,30 @@ body:after {
   z-index: -1;
 }
 
-/* line 33, ../sass/style.scss */
+/* line 35, ../sass/style.scss */
 h1 {
   font-size: 2em;
 }
 
-/* line 36, ../sass/style.scss */
+/* line 38, ../sass/style.scss */
 .title {
   text-align: center;
 }
 
-/* line 39, ../sass/style.scss */
+/* line 41, ../sass/style.scss */
 .quote-container {
   text-align: center;
   margin: 2em auto;
 }
 
-/* line 43, ../sass/style.scss */
+/* line 45, ../sass/style.scss */
 .btn {
   background-color: transparent;
   border: 2px solid #ffffff;
   color: #ffffff;
 }
 
-/* line 48, ../sass/style.scss */
+/* line 50, ../sass/style.scss */
 .copyright {
   color: #eaeaea;
   font-size: 0.5em;
