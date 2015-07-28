@@ -59,8 +59,8 @@
               var quoteText = JSON.parse(data);
               console.log(data);
               if (quoteText.category === "Movies") {
-                $(".quote-text").text(quoteText.quote);
-                $(".movie").text(quoteText.author);
+                $(".quote-text").text('"' + quoteText.quote + '"');
+                $(".movie").text("- " + quoteText.author);
               }
               else {
                 getQuote();
