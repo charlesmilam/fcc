@@ -59,11 +59,20 @@ body {
   opacity: 0;
   @include transition-property(font-size, 0.7em);
   @include transition-duration(0.3s);
+  &:link {
+    color: $base-primary-color;
+  }
+  &:visited {
+    color: $base-primary-color;
+  }
   &:hover {
     color: $base-primary-color;
     font-size: 1em;
     @include transition-property(all);
     @include transition-duration(0.3s);
+  }
+  &:active {
+    color: $base-primary-color !important;
   }
 }
 .btn {
