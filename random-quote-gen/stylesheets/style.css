@@ -60,9 +60,6 @@ body:after {
   text-align: center;
   margin: 2em 0 3em 0;
 }
-.quote-container a {
-  color: #eaeaea;
-}
 
 .quote-text {
   font-size: 1.2em;
@@ -73,10 +70,37 @@ body:after {
   margin-bottom: 2em;
 }
 
+.tweet {
+  color: #eaeaea;
+  font-size: 0.7em;
+  margin: 5em;
+  -moz-transition-property: font-size, 0.7em;
+  -o-transition-property: font-size, 0.7em;
+  -webkit-transition-property: font-size, 0.7em;
+  transition-property: font-size, 0.7em;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.tweet:hover {
+  color: #eaeaea;
+  font-size: 1em;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+
 .btn {
   background-color: transparent;
   border: 2px solid #ffffff;
   color: #ffffff;
+  margin-bottom: 0.3em;
   opacity: 1;
   -moz-transition-property: all;
   -o-transition-property: all;

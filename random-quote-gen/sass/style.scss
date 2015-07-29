@@ -44,9 +44,6 @@ body {
 .quote-container {
   text-align: center;
   margin: 2em 0 3em 0;
-  a {
-    color: $base-primary-color;
-  }
 }
 .quote-text {
   font-size: 1.2em;
@@ -55,10 +52,24 @@ body {
   font-size: .8em;
   margin-bottom: 2em;
 }
+.tweet {
+  color: $base-primary-color;
+  font-size: 0.7em;
+  margin: 5em;
+  @include transition-property(font-size, 0.7em);
+  @include transition-duration(0.3s);
+  &:hover {
+    color: $base-primary-color;
+    font-size: 1em;
+    @include transition-property(all);
+    @include transition-duration(0.3s);
+  }
+}
 .btn {
   background-color: transparent;
   border: 2px solid #ffffff;
   color: #ffffff;
+  margin-bottom: 0.3em;
   opacity: 1;
   @include transition-property(all);
   @include transition-duration(0.5s);
