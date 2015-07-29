@@ -6,6 +6,7 @@
     <title>Random Movie Quote Generator | FCC | Charles Milam</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="./stylesheets/style.css" media="screen">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   </head>
   <body>
     <header>
@@ -24,7 +25,11 @@
             <div class="quote-container">
               <p class="quote-text"></p>
               <p class="movie"></p>
-              <a class="btn btn-default btn-lg" href="#">Get Quote</a>
+              <a class="btn btn-default btn-lg get-quote" href="#">Get Quote</a>
+              <br>
+              <a class="tweet" href="#">
+                <i class="fa fa-twitter"></i> tweet this quote
+              </a>
             </div>
           </div>
         </div>
@@ -45,11 +50,20 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="./javascripts/getQuote.js"></script>
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
     <script type="text/javascript">
       $(document).ready(function() {
-        $(".btn").click(function() {
+        $(".get-quote").click(function() {
           getQuote();
         });
+        $(".tweet").click(function() {
+          var quoteEncText = encodeURIComponent($(".quote-text").text());
+          var movieEncText = encodeURIComponent($(".movie").text());
+          var hashTags = "moviequotes, " + $(".movie").text().replace(/[-\s\.]/g, "").toLowerCase();
+          var tweet = "https://twitter.com/intent/tweet?text=" + quoteEncText + " -" + movieEncText + "&hashtags=" + hashTags;
+
+          $(this).attr("href", tweet);
+        })
       });
     </script>
   </body>

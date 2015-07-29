@@ -70,10 +70,47 @@ body:after {
   margin-bottom: 2em;
 }
 
+.tweet {
+  color: #eaeaea;
+  font-size: 0.7em;
+  margin: 5em;
+  opacity: 0;
+  -moz-transition-property: font-size, 0.7em;
+  -o-transition-property: font-size, 0.7em;
+  -webkit-transition-property: font-size, 0.7em;
+  transition-property: font-size, 0.7em;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.tweet:link {
+  color: #eaeaea;
+}
+.tweet:visited {
+  color: #eaeaea;
+}
+.tweet:hover {
+  color: #eaeaea;
+  font-size: 1em;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.tweet:active {
+  color: #eaeaea !important;
+}
+
 .btn {
   background-color: transparent;
   border: 2px solid #ffffff;
   color: #ffffff;
+  margin-bottom: 0.3em;
   opacity: 1;
   -moz-transition-property: all;
   -o-transition-property: all;

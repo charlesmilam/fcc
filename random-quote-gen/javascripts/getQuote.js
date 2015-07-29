@@ -8,6 +8,8 @@ function getQuote() {
       var quoteText = JSON.parse(data);
       var quoteTag = $(".quote-text");
       var movieTag = $(".movie");
+      var tweetTag = $(".tweet");
+
       console.log(data);
       if (quoteText.category === "Movies") {
         quoteTag.fadeOut("slow", function(){
@@ -15,7 +17,9 @@ function getQuote() {
         });
         movieTag.fadeOut("slow", function(){
           movieTag.text("- " + quoteText.author).fadeIn("slow");
-        });  
+        });
+        tweetTag.css("opacity", 1);
+        tweetTag.fadeIn(3500);
       }
       else {
         getQuote();
