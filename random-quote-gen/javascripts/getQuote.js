@@ -19,7 +19,7 @@ function getQuote() {
           movieTag.text("- " + quoteText.author).fadeIn("slow");
         });
         tweetTag.css("opacity", 1);
-        tweetTag.fadeIn(1000);
+        tweetTag.fadeIn(3500);
       }
       else {
         getQuote();
