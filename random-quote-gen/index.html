@@ -24,7 +24,8 @@
             <div class="quote-container">
               <p class="quote-text"></p>
               <p class="movie"></p>
-              <a class="btn btn-default btn-lg" href="#">Get Quote</a>
+              <a class="btn btn-default btn-lg get-quote" href="#">Get Quote</a>
+              <a class="btn btn-default tweet" href="#">Tweet this</a>
             </div>
           </div>
         </div>
@@ -45,11 +46,20 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="./javascripts/getQuote.js"></script>
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
     <script type="text/javascript">
       $(document).ready(function() {
-        $(".btn").click(function() {
+        $(".get-quote").click(function() {
           getQuote();
         });
+        $(".tweet").click(function() {
+          //console.log($(".quote-text").text());
+          var quoteEncText = encodeURIComponent($(".quote-text").text());
+          var movieEncText = encodeURIComponent($(".movie").text());
+          var tweet = "https://twitter.com/intent/tweet?text=" + quoteEncText + " -" + movieEncText;
+
+          $(this).attr("href", tweet);
+        })
       });
     </script>
   </body>
