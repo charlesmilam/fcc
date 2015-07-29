@@ -47,9 +47,6 @@ body {
 }
 .quote-text {
   font-size: 1.2em;
-  opacity: 0;
-  @include transition-property(opacity);
-  @include transition-duration(0.3s);
 }
 .movie {
   font-size: .8em;
@@ -59,7 +56,9 @@ body {
   background-color: transparent;
   border: 2px solid #ffffff;
   color: #ffffff;
-  opacity: 100%;
+  opacity: 1;
+  @include transition-property(all);
+  @include transition-duration(0.5s);
 }
 .copyright {
   color: #eaeaea;

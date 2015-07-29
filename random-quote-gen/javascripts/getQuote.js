@@ -6,10 +6,16 @@ function getQuote() {
     datatype: 'json',
     success: function(data) {
       var quoteText = JSON.parse(data);
+      var quoteTag = $(".quote-text");
+      var movieTag = $(".movie");
       console.log(data);
       if (quoteText.category === "Movies") {
-        $(".quote-text").text('"' + quoteText.quote + '"');
-        $(".movie").text("- " + quoteText.author);
+        quoteTag.fadeOut("slow", function(){
+          quoteTag.text('"' + quoteText.quote + '"').fadeIn("slow");
+        });
+        movieTag.fadeOut("slow", function(){
+          movieTag.text("- " + quoteText.author).fadeIn("slow");
+        });  
       }
       else {
         getQuote();
