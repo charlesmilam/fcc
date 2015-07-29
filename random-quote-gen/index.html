@@ -59,7 +59,8 @@
         $(".tweet").click(function() {
           var quoteEncText = encodeURIComponent($(".quote-text").text());
           var movieEncText = encodeURIComponent($(".movie").text());
-          var tweet = "https://twitter.com/intent/tweet?text=" + quoteEncText + " -" + movieEncText;
+          var hashTags = "moviequotes, " + $(".movie").text().replace(/[-\s\.]/g, "").toLowerCase();
+          var tweet = "https://twitter.com/intent/tweet?text=" + quoteEncText + " -" + movieEncText + "&hashtags=" + hashTags;
 
           $(this).attr("href", tweet);
         })

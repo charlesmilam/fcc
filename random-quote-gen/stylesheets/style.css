@@ -74,6 +74,7 @@ body:after {
   color: #eaeaea;
   font-size: 0.7em;
   margin: 5em;
+  opacity: 0;
   -moz-transition-property: font-size, 0.7em;
   -o-transition-property: font-size, 0.7em;
   -webkit-transition-property: font-size, 0.7em;

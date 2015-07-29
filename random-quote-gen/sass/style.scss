@@ -56,6 +56,7 @@ body {
   color: $base-primary-color;
   font-size: 0.7em;
   margin: 5em;
+  opacity: 0;
   @include transition-property(font-size, 0.7em);
   @include transition-duration(0.3s);
   &:hover {
