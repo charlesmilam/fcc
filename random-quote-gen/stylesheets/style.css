@@ -60,6 +60,9 @@ body:after {
   text-align: center;
   margin: 2em 0 3em 0;
 }
+.quote-container a {
+  color: #eaeaea;
+}
 
 .quote-text {
   font-size: 1.2em;

@@ -44,6 +44,9 @@ body {
 .quote-container {
   text-align: center;
   margin: 2em 0 3em 0;
+  a {
+    color: $base-primary-color;
+  }
 }
 .quote-text {
   font-size: 1.2em;
