@@ -15,24 +15,21 @@
     <script type="text/javascript">
       $(document).ready(function() {
         var apiImperial = "http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&units=imperial&APPID=87a3ac98e2e48918db144e9f69eeb057",
-            apiMetric = "http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&units=metric&APPID=87a3ac98e2e48918db144e9f69eeb057";
+            apiMetric = "http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&units=metric&APPID=87a3ac98e2e48918db144e9f69eeb057",
+            coords = 0;
 
         function getLocation() {
-          navigator.geolocation.getCurrentPosition(success, error);
-
-          function success(position) {
-            var lat  = position.coords.latitude;
-            var long = position.coords.longitude;
-
-            return lat;
-          };
-
-          function(error) {
-            alert("Error: " + error);
-          };
+          navigator.geolocation.getCurrentPosition(buildApiUrl);
         }
-        var location = getLocation();
-        console.log(location);
+        function buildApiUrl(position) {
+          var lat = position.coords.latitude;
+          var long = position.coords.longitude;
+
+          coords = lat;
+        }
+        getLocation();
+
+        console.log("loc: " + coords);
         getWeather(apiImperial);
       });
     </script>
