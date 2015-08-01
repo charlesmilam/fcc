@@ -1,23 +1,23 @@
 var LocalWeather = function(unitType) {
-  var WEATHER_API_KEY = 87a3ac98e2e48918db144e9f69eeb057;
+  var WEATHER_API_KEY = "87a3ac98e2e48918db144e9f69eeb057";
   var localWeather = {
     "city": "",
     "temp": 0,
     "humidity": 0,
-    "sky": "";
+    "sky": "",
     "wind": {
-      "dir": 0;
-      "speed": 0;
+      "dir": 0,
+      "speed": 0
     }
   };
 
   var apiUrl = "";
 
-  function getLocation() {
-    navigator.geolocation.getCurrentPosition(buildApiUrl);
+  this.getLocation = function() {
+    navigator.geolocation.getCurrentPosition(this.buildApiUrl);
   }
 
-  function buildApiUrl(position) {
+  this.buildApiUrl = function(position) {
     var lat = position.coords.latitude;
     var long = position.coords.longitude;
 
@@ -29,12 +29,14 @@ var LocalWeather = function(unitType) {
               unitType +
               "&APPID=" +
               WEATHER_API_KEY;
+
+    console.log(apiUrl);
   }
 
-  function getWeather(apiUrl) {
+  this.getWeather = function(apiUrl) {
     $.getJSON(apiUrl, function(data){
       console.log(data);
-      var cityName = data.name;
+      this.localWeather.city = data.name;
     })
     .fail(function(jqxhr, status, error) {
       var err = status + ", " + error;
