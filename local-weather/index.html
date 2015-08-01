@@ -13,10 +13,26 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src=".\javascripts\getWeather.js"></script>;
     <script type="text/javascript">
-      $(document).ready(function() {;
-        var apiImperial = "http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&units=imperial&APPID=87a3ac98e2e48918db144e9f69eeb057";
-        var apiMetric = "http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&units=metric&APPID=87a3ac98e2e48918db144e9f69eeb057"
+      $(document).ready(function() {
+        var apiImperial = "http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&units=imperial&APPID=87a3ac98e2e48918db144e9f69eeb057",
+            apiMetric = "http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&units=metric&APPID=87a3ac98e2e48918db144e9f69eeb057";
 
+        function getLocation() {
+          navigator.geolocation.getCurrentPosition(success, error);
+
+          function success(position) {
+            var lat  = position.coords.latitude;
+            var long = position.coords.longitude;
+
+            return lat;
+          };
+
+          function(error) {
+            alert("Error: " + error);
+          };
+        }
+        var location = getLocation();
+        console.log(location);
         getWeather(apiImperial);
       });
     </script>
