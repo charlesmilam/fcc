@@ -15,9 +15,11 @@
     <script type="text/javascript">
       $(document).ready(function() {
         var localWeather = new LocalWeather("imperial");
-        console.log("city: " + localWeather.city);
-        localWeather.getLocation();
-        localWeather.getWeather();
+        //console.log("city: " + localWeather.city);
+        localWeather.setLocation();
+        //localWeather.getWeather();
+        console.log(localWeather);
+        console.log(localWeather.city);
       });
     </script>
   </body>
