@@ -12,7 +12,13 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript">
+      $(document).ready(function() {
+        $.getJSON("http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&APPID=87a3ac98e2e48918db144e9f69eeb057",
+          function(data) {
+            console.log(data);
+          });
 
+      });
     </script>
   </body>
 </html>
