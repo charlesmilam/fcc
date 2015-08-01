@@ -14,12 +14,15 @@
     <script src=".\javascripts\LocalWeather.js"></script>;
     <script type="text/javascript">
       $(document).ready(function() {
-        var localWeather = new LocalWeather("imperial");
-        //console.log("city: " + localWeather.city);
-        localWeather.setLocation();
-        //localWeather.getWeather();
-        console.log(localWeather);
-        console.log(localWeather.city);
+        var weather = new LocalWeather("imperial");
+        //var weather2 = new LocalWeather("metric");
+
+        console.log("weather: " + weather.getLocalWeather());
+        //console.log("weather2: " + weather2.getLocalWeather());
+        weather.setLocation();
+        //weather2.setLocation();
+        console.log("city: ", weather.getCity());
+        //console.log("city2: ", weather2.getCity());
       });
     </script>
   </body>

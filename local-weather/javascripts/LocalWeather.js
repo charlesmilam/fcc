@@ -1,4 +1,4 @@
-var LocalWeather = function(unitType) {
+function LocalWeather(unitType) {
   var WEATHER_API_KEY = "87a3ac98e2e48918db144e9f69eeb057";
   var localWeather = {
         "city": "",
@@ -10,17 +10,22 @@ var LocalWeather = function(unitType) {
           "speed": 0
         }
       };
-  //var apiUrl = "test";
 
+  this.getLocalWeather = function() {
+    return localWeather;
+  }
+  this.getCity = function() {
+    console.log("get city: " + localWeather.city);
+    return localWeather.city;
+  }
   this.setLocation = function() {
     navigator.geolocation.getCurrentPosition(success, error);
 
     function success(position) {
       //console.log("in success");
-      console.log(position);
-      var lat = position.coords.latitude//.toString().slice(0, 2);
-      var long = position.coords.longitude//.toString().slice(1, 3);
-      console.log("before: " + apiUrl);
+      //console.log(position);
+      var lat = position.coords.latitude
+      var long = position.coords.longitude
       var apiUrl = "http://api.openweathermap.org/data/2.5/weather?lat=" +
                 lat +
                 "&lon=" +
@@ -31,7 +36,7 @@ var LocalWeather = function(unitType) {
                 WEATHER_API_KEY;
 
       console.log("after: " + apiUrl);
-      getWeather(apiUrl);
+      getWeatherFromApi(apiUrl);
     };
 
     function error(error) {
@@ -39,12 +44,13 @@ var LocalWeather = function(unitType) {
     };
   }
 
-  var getWeather = function(apiUrl) {
-    console.log(apiUrl);
+  function getWeatherFromApi(apiUrl) {
+    //console.log(apiUrl);
     $.getJSON(apiUrl, function(data){
-      console.log(data);
+      console.log("in get weather");
+      // console.log(data.name);
       localWeather.city = data.name;
-      console.log(data.name);
+      // console.log(localWeather);
     })
     .fail(function(jqxhr, status, error) {
       var err = status + ", " + error;
