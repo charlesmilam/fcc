@@ -1,5 +1,6 @@
 function LocalWeather(unitType) {
   var WEATHER_API_KEY = "87a3ac98e2e48918db144e9f69eeb057";
+  var unitType = unitType;
   var localWeather = {
         "city": "",
         "temp": 0,
@@ -10,15 +11,16 @@ function LocalWeather(unitType) {
           "speed": 0
         }
       };
+  }
 
-  this.getLocalWeather = function() {
-    return localWeather;
+  LocalWeather.prototype.getLocalWeather = function() {
+    return this.localWeather;
   }
-  this.getCity = function() {
-    console.log("get city: " + localWeather.city);
-    return localWeather.city;
+  LocalWeather.prototype.getCity = function() {
+    console.log("get city: " + this.localWeather.city);
+    return this.localWeather.city;
   }
-  this.setLocation = function() {
+  LocalWeather.prototype.setLocation = function() {
     navigator.geolocation.getCurrentPosition(success, error);
 
     function success(position) {
@@ -31,12 +33,22 @@ function LocalWeather(unitType) {
                 "&lon=" +
                 long +
                 "&units=" +
-                unitType +
+                this.unitType +
                 "&APPID=" +
-                WEATHER_API_KEY;
+                this.WEATHER_API_KEY;
 
       console.log("after: " + apiUrl);
-      getWeatherFromApi(apiUrl);
+      //this.getWeatherFromApi(apiUrl);
+      $.getJSON(apiUrl, function(data){
+        console.log("in get weather");
+        // console.log(data.name);
+        this.localWeather.city = data.name;
+        // console.log(localWeather);
+      })
+      .fail(function(jqxhr, status, error) {
+        var err = status + ", " + error;
+        alert("Sorry, the request failed: " + err);
+      });
     };
 
     function error(error) {
@@ -44,12 +56,12 @@ function LocalWeather(unitType) {
     };
   }
 
-  function getWeatherFromApi(apiUrl) {
+  LocalWeather.prototype.getWeatherFromApi = function(apiUrl) {
     //console.log(apiUrl);
     $.getJSON(apiUrl, function(data){
       console.log("in get weather");
       // console.log(data.name);
-      localWeather.city = data.name;
+      this.localWeather.city = data.name;
       // console.log(localWeather);
     })
     .fail(function(jqxhr, status, error) {
@@ -57,4 +69,4 @@ function LocalWeather(unitType) {
       alert("Sorry, the request failed: " + err);
     });
   }
-} // end LocalWeather
+//} // end LocalWeather
