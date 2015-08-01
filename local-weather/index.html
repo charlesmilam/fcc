@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Local Weather | FCC | Charles Milam</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./stylesheets/style.css" media="screen">
+  </head>
+  <body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src=".\javascripts\getWeather.js"></script>;
+    <script type="text/javascript">
+      $(document).ready(function() {
+        var apiImperial = "http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&units=imperial&APPID=87a3ac98e2e48918db144e9f69eeb057",
+            apiMetric = "http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&units=metric&APPID=87a3ac98e2e48918db144e9f69eeb057",
+            coords = 0;
+
+        function getLocation() {
+          navigator.geolocation.getCurrentPosition(buildApiUrl);
+        }
+        function buildApiUrl(position) {
+          var lat = position.coords.latitude;
+          var long = position.coords.longitude;
+
+          coords = lat;
+        }
+        getLocation();
+
+        console.log("loc: " + coords);
+        getWeather(apiImperial);
+      });
+    </script>
+  </body>
+</html>
