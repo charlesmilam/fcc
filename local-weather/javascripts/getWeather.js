@@ -52,16 +52,17 @@ function setWeatherFromApi(apiUrl, unitType) {
     tempSymbol = " &#8451;";
   }
   $.getJSON(apiUrl, function(data){
+    var iconDiv = "<div class='weather-icon'><img src='http://openweathermap.org/img/w/" +
+      data.weather[0].icon +
+      ".png' /></div>";
+    console.log(iconDiv);
     console.log(data);
-    $(".weather-icon").append(
-      "<img src='http://openweathermap.org/img/w/" +
-      data.weather[0].icon + ".png' />"
-    );
-    $(".city").append(data.name);
-    $(".temp").append(data.main.temp.toFixed(1) + tempSymbol);
-    $(".humidity").append(data.main.humidity + "%");
-    $(".sky").append(data.weather[0].description);
-    $(".wind").append(translateWindDirection(data.wind.deg) + " @" +
+    $(".weather-icon").replaceWith(iconDiv);
+    $(".city").replaceWith(data.name);
+    $(".temp").replaceWith(data.main.temp.toFixed(1) + tempSymbol);
+    $(".humidity").replaceWith(data.main.humidity + "%");
+    $(".sky").replaceWith(data.weather[0].description);
+    $(".wind").replaceWith(translateWindDirection(data.wind.deg) + " @" +
       data.wind.speed.toFixed(1) + speedSymbol
     );
     // $(".wind-speed").append(data.wind.speed.toFixed(1));
