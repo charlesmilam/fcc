@@ -12,13 +12,27 @@ $base-line-height: 30px;
 .current-conditions {
   text-align: center;
   margin: auto;
-  max-width: 25%;
+  max-width: 33%;
 }
 .weather-icon img {
   width: 13em;
 }
 .city {
   font-size: 2em;
+}
+.change-unit-type button {
+  background: none;
+  border: none;
+  display: inline;
+  font: inherit;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 // xsmall devices
 @media (max-width: 768px) {

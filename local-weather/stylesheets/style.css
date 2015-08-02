@@ -13,7 +13,7 @@ html {
 .current-conditions {
   text-align: center;
   margin: auto;
-  max-width: 25%;
+  max-width: 33%;
 }
 
 /* line 17, ../sass/style.scss */
@@ -26,8 +26,25 @@ html {
   font-size: 2em;
 }
 
+/* line 23, ../sass/style.scss */
+.change-unit-type button {
+  background: none;
+  border: none;
+  display: inline;
+  font: inherit;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+/* line 33, ../sass/style.scss */
+.change-unit-type button:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 768px) {
-  /* line 25, ../sass/style.scss */
+  /* line 39, ../sass/style.scss */
   .current-conditions {
     max-width: 100%;
   }
