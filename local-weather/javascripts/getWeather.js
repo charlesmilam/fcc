@@ -47,11 +47,18 @@ function setWeatherFromApi(apiUrl) {
     $(".temp").text(data.main.temp.toFixed(1));
     $(".humidity").text(data.main.humidity);
     $(".sky").text(data.weather[0].description);
-    $(".wind-dir").text(data.wind.deg);
+    $(".wind-dir").text(translateWindDirection(data.wind.deg));
     $(".wind-speed").text(data.wind.speed.toFixed(1));
   })
   .fail(function(jqxhr, status, error) {
     var err = status + ", " + error;
     alert("Sorry, the request failed: " + err);
   });
+}
+
+function translateWindDirection(deg) {
+  var compassPoints=["N","NNE","NE","ENE","E","ESE", "SE", "SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"];
+  var val = Math.floor((deg / 22.5) + 0.5);
+
+  return compassPoints[(val % 16)];
 }
