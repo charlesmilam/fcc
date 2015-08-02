@@ -17,41 +17,40 @@ function setLocation(unitType) {
     var long = position.coords.longitude;
     var latlng = new google.maps.LatLng(lat, long);
     var geocoder = new google.maps.Geocoder();
-    var city = "";
-    var state = "";
 
     geocoder.geocode({'latLng': latlng}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         if (results[1]) {
           for (var i = 0; i < results.length; i++) {
             if (results[i].types[0] === "locality") {
-              city = results[i].address_components[0].short_name;
-              state = results[i].address_components[2].short_name;
-              console.log("city: " + city);
+              console.log(results[i].address_components[0].short_name);
+              // return results[i].address_components[0].short_name;
+              apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" +
+                        results[i].address_components[0].short_name +
+                        "&units=" +
+                        unitType +
+                        "&APPID=" +
+                        WEATHER_API_KEY;
+
+              console.log("after: " + apiUrl);
+              setWeatherFromApi(apiUrl);
             }
           }
         }
-        else {console.log("No reverse geocode results.")}
+        else {alert("Sorry, there were no results for your location.")}
       }
       else {console.log("Geocoder failed: " + status)}
     });
-
-
-
-
-
-
-    apiUrl = "http://api.openweathermap.org/data/2.5/weather?lat=" +
-              lat +
-              "&lon=" +
-              long +
-              "&units=" +
-              unitType +
-              "&APPID=" +
-              WEATHER_API_KEY;
-
-    console.log("after: " + apiUrl);
-    setWeatherFromApi(apiUrl);
+    // console.log("city: ", city);
+    // apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" +
+    //           city +
+    //           "&units=" +
+    //           unitType +
+    //           "&APPID=" +
+    //           WEATHER_API_KEY;
+    //
+    // console.log("after: " + apiUrl);
+    // setWeatherFromApi(apiUrl);
   };
 
   function error(error) {
@@ -66,7 +65,7 @@ function setWeatherFromApi() {
     $(".temp").text(data.main.temp);
     $(".humidity").text(data.main.humidity);
     $(".sky").text(data.weather[0].description);
-    $(".wind-dir").text(data.wind.dir);
+    $(".wind-dir").text(data.wind.deg);
     $(".wind-speed").text(data.wind.speed);
   })
   .fail(function(jqxhr, status, error) {
