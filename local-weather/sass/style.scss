@@ -1,0 +1,7 @@
+@import "compass";
+
+$base-primary-color: #eaeaea;
+$base-font: "Roboto", sans-serif;
+$base-font-size: 20px;
+$base-line-height: 30px;
+@include establish-baseline;
