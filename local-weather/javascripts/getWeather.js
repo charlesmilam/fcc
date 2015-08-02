@@ -1,5 +1,4 @@
 var WEATHER_API_KEY = "87a3ac98e2e48918db144e9f69eeb057";
-// var apiUrl = "";
 
 function setLocation(unitType) {
   navigator.geolocation.getCurrentPosition(success, error);
@@ -16,7 +15,6 @@ function setLocation(unitType) {
         if (results[1]) {
           for (var i = 0; i < results.length; i++) {
             if (results[i].types[0] === "locality") {
-              //console.log(results[i].address_components[0].short_name);
               apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" +
                         results[i].address_components[0].short_name +
                         "&units=" +
@@ -55,17 +53,31 @@ function setWeatherFromApi(apiUrl, unitType) {
     var iconDiv = "<div class='weather-icon'><img src='http://openweathermap.org/img/w/" +
       data.weather[0].icon +
       ".png' /></div>";
-    console.log(iconDiv);
+    var cityDiv = "<div class='city'>" +
+      data.name +
+      "</div>";
+    var tempDiv = "<div class='temp'>Current Temperature<br>" +
+      data.main.temp.toFixed(1) + tempSymbol +
+      "</div>";
+    var humidityDiv = "<div class='humidity'> Humidity<br>" +
+      data.main.humidity +
+      "%</div>";
+    var skyDiv = "<div class='sky'>" +
+      data.weather[0].description +
+      "</div>";
+    var windDiv = "<div class='wind'>Wind Direction &amp; Speed<br>" +
+      translateWindDirection(data.wind.deg) +
+      " @ " +
+      data.wind.speed.toFixed(1) + speedSymbol +
+      "</div>";
+
     console.log(data);
     $(".weather-icon").replaceWith(iconDiv);
-    $(".city").replaceWith(data.name);
-    $(".temp").replaceWith(data.main.temp.toFixed(1) + tempSymbol);
-    $(".humidity").replaceWith(data.main.humidity + "%");
-    $(".sky").replaceWith(data.weather[0].description);
-    $(".wind").replaceWith(translateWindDirection(data.wind.deg) + " @" +
-      data.wind.speed.toFixed(1) + speedSymbol
-    );
-    // $(".wind-speed").append(data.wind.speed.toFixed(1));
+    $(".city").replaceWith(cityDiv);
+    $(".temp").replaceWith(tempDiv);
+    $(".humidity").replaceWith(humidityDiv);
+    $(".sky").replaceWith(skyDiv);
+    $(".wind").replaceWith(windDiv);
   })
   .fail(function(jqxhr, status, error) {
     var err = status + ", " + error;
@@ -77,5 +89,5 @@ function translateWindDirection(deg) {
   var compassPoints=["N","NNE","NE","ENE","E","ESE", "SE", "SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"];
   var val = Math.floor((deg / 22.5) + 0.5);
 
-  return compassPoints[(val % 16)];
+  return compassPoints[(val % 16)] || "direction not reported";
 }
