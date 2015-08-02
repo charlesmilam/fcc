@@ -13,10 +13,34 @@ function setLocation(unitType) {
   navigator.geolocation.getCurrentPosition(success, error);
 
   function success(position) {
-    //console.log("in success");
-    //console.log(position);
-    var lat = position.coords.latitude
-    var long = position.coords.longitude
+    var lat = position.coords.latitude;
+    var long = position.coords.longitude;
+    var latlng = new google.maps.LatLng(lat, long);
+    var geocoder = new google.maps.Geocoder();
+    var city = "";
+    var state = "";
+
+    geocoder.geocode({'latLng': latlng}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        if (results[1]) {
+          for (var i = 0; i < results.length; i++) {
+            if (results[i].types[0] === "locality") {
+              city = results[i].address_components[0].short_name;
+              state = results[i].address_components[2].short_name;
+              console.log("city: " + city);
+            }
+          }
+        }
+        else {console.log("No reverse geocode results.")}
+      }
+      else {console.log("Geocoder failed: " + status)}
+    });
+
+
+
+
+
+
     apiUrl = "http://api.openweathermap.org/data/2.5/weather?lat=" +
               lat +
               "&lon=" +
@@ -48,5 +72,25 @@ function setWeatherFromApi() {
   .fail(function(jqxhr, status, error) {
     var err = status + ", " + error;
     alert("Sorry, the request failed: " + err);
+  });
+}
+
+function getCity() {
+  latlng 	 = new google.maps.LatLng(lat, lng),
+  geocoder = new google.maps.Geocoder();
+  geocoder.geocode({'latLng': latlng}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      if (results[1]) {
+        for (var i = 0; i < results.length; i++) {
+          if (results[i].types[0] === "locality") {
+            var city = results[i].address_components[0].short_name;
+            var state = results[i].address_components[2].short_name;
+            $("input[name='location']").val(city + ", " + state);
+          }
+        }
+      }
+      else {console.log("No reverse geocode results.")}
+    }
+    else {console.log("Geocoder failed: " + status)}
   });
 }
