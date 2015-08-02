@@ -5,3 +5,18 @@ $base-font: "Roboto", sans-serif;
 $base-font-size: 20px;
 $base-line-height: 30px;
 @include establish-baseline;
+
+.page-title {
+  text-align: center;
+}
+.current-conditions {
+  text-align: center;
+  margin: auto;
+  max-width: 25%;
+}
+// xsmall devices
+@media (max-width: 768px) {
+  .current-conditions {
+    max-width: 100%;
+  }
+}

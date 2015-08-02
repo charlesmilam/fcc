@@ -3,3 +3,22 @@ html {
   font-size: 125%;
   line-height: 1.5em;
 }
+
+/* line 9, ../sass/style.scss */
+.page-title {
+  text-align: center;
+}
+
+/* line 12, ../sass/style.scss */
+.current-conditions {
+  text-align: center;
+  margin: auto;
+  max-width: 25%;
+}
+
+@media (max-width: 768px) {
+  /* line 19, ../sass/style.scss */
+  .current-conditions {
+    max-width: 100%;
+  }
+}
