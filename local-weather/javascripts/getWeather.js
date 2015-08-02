@@ -25,7 +25,7 @@ function setLocation(unitType) {
                         WEATHER_API_KEY;
 
               // console.log("after: " + apiUrl);
-              setWeatherFromApi(apiUrl);
+              setWeatherFromApi(apiUrl, unitType);
             }
           }
         }
@@ -40,7 +40,17 @@ function setLocation(unitType) {
   };
 }
 
-function setWeatherFromApi(apiUrl) {
+function setWeatherFromApi(apiUrl, unitType) {
+  var speedSymbol = "";
+  var degreesSymbol = "";
+  if (unitType === "imperial") {
+    speedSymbol = " mph";
+    tempSymbol = "&#8457;";
+  }
+  else {
+    speedSymbol = " km/h";
+    tempSymbol = " &#8451;";
+  }
   $.getJSON(apiUrl, function(data){
     console.log(data);
     $(".weather-icon").append(
@@ -48,11 +58,11 @@ function setWeatherFromApi(apiUrl) {
       data.weather[0].icon + ".png' />"
     );
     $(".city").append(data.name);
-    $(".temp").append(data.main.temp.toFixed(1));
-    $(".humidity").append(data.main.humidity);
+    $(".temp").append(data.main.temp.toFixed(1) + tempSymbol);
+    $(".humidity").append(data.main.humidity + "%");
     $(".sky").append(data.weather[0].description);
     $(".wind").append(translateWindDirection(data.wind.deg) + " @" +
-      data.wind.speed.toFixed(1) + " mph"
+      data.wind.speed.toFixed(1) + speedSymbol
     );
     // $(".wind-speed").append(data.wind.speed.toFixed(1));
   })

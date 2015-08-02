@@ -17,12 +17,17 @@ html {
 }
 
 /* line 17, ../sass/style.scss */
+.weather-icon img {
+  width: 13em;
+}
+
+/* line 20, ../sass/style.scss */
 .city {
   font-size: 2em;
 }
 
 @media (max-width: 768px) {
-  /* line 22, ../sass/style.scss */
+  /* line 25, ../sass/style.scss */
   .current-conditions {
     max-width: 100%;
   }
