@@ -16,8 +16,13 @@ html {
   max-width: 25%;
 }
 
+/* line 17, ../sass/style.scss */
+.city {
+  font-size: 2em;
+}
+
 @media (max-width: 768px) {
-  /* line 19, ../sass/style.scss */
+  /* line 22, ../sass/style.scss */
   .current-conditions {
     max-width: 100%;
   }

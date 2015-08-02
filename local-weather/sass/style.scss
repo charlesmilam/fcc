@@ -14,6 +14,9 @@ $base-line-height: 30px;
   margin: auto;
   max-width: 25%;
 }
+.city {
+  font-size: 2em;
+}
 // xsmall devices
 @media (max-width: 768px) {
   .current-conditions {

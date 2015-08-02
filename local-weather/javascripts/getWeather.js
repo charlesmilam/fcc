@@ -44,11 +44,13 @@ function setWeatherFromApi(apiUrl) {
   $.getJSON(apiUrl, function(data){
     console.log(data);
     $(".city").text(data.name);
-    $(".temp").text(data.main.temp.toFixed(1));
-    $(".humidity").text(data.main.humidity);
-    $(".sky").text(data.weather[0].description);
-    $(".wind-dir").text(translateWindDirection(data.wind.deg));
-    $(".wind-speed").text(data.wind.speed.toFixed(1));
+    $(".temp").append(data.main.temp.toFixed(1));
+    $(".humidity").append(data.main.humidity);
+    $(".sky").append(data.weather[0].description);
+    $(".wind").append(translateWindDirection(data.wind.deg) + " @" +
+      data.wind.speed.toFixed(1) + " mph"
+    );
+    // $(".wind-speed").append(data.wind.speed.toFixed(1));
   })
   .fail(function(jqxhr, status, error) {
     var err = status + ", " + error;
