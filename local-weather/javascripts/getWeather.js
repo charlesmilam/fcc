@@ -43,7 +43,11 @@ function setLocation(unitType) {
 function setWeatherFromApi(apiUrl) {
   $.getJSON(apiUrl, function(data){
     console.log(data);
-    $(".city").text(data.name);
+    $(".weather-icon").append(
+      "<img src='http://openweathermap.org/img/w/" +
+      data.weather[0].icon + ".png' />"
+    );
+    $(".city").append(data.name);
     $(".temp").append(data.main.temp.toFixed(1));
     $(".humidity").append(data.main.humidity);
     $(".sky").append(data.weather[0].description);
