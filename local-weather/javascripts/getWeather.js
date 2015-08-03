@@ -56,16 +56,16 @@ function setWeatherFromApi(apiUrl, unitType) {
     var cityDiv = "<div class='city'>" +
       data.name +
       "</div>";
-    var tempDiv = "<div class='temp'>Current Temperature<br>" +
+    var tempDiv = "<div class='temp'><span class='weather-label'>Current Temperature</span><br>" +
       data.main.temp.toFixed(1) + tempSymbol +
       "</div>";
-    var humidityDiv = "<div class='humidity'> Humidity<br>" +
+    var humidityDiv = "<div class='humidity'><span class='weather-label'>Humidity</span><br>" +
       data.main.humidity +
       "%</div>";
     var skyDiv = "<div class='sky'>" +
       data.weather[0].description +
       "</div>";
-    var windDiv = "<div class='wind'>Wind Direction &amp; Speed<br>" +
+    var windDiv = "<div class='wind'><span class='weather-label'>Wind Direction &amp; Speed</span><br>" +
       translateWindDirection(data.wind.deg) +
       " @ " +
       data.wind.speed.toFixed(1) + speedSymbol +
