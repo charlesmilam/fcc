@@ -33,18 +33,17 @@ body {
 
 /* line 33, ../sass/style.scss */
 .weather-icon img {
-  min-height: 150px;
   margin: auto;
 }
 
-/* line 38, ../sass/style.scss */
+/* line 37, ../sass/style.scss */
 .city {
   font-family: "Roboto", sans-serif;
   font-weight: 100;
   font-size: 2em;
 }
 
-/* line 44, ../sass/style.scss */
+/* line 43, ../sass/style.scss */
 .change-unit-type button {
   background: none;
   border: none;
@@ -57,13 +56,13 @@ body {
   cursor: pointer;
   text-decoration: none;
 }
-/* line 55, ../sass/style.scss */
+/* line 54, ../sass/style.scss */
 .change-unit-type button:hover {
   text-decoration: underline;
 }
 
 @media (max-width: 768px) {
-  /* line 62, ../sass/style.scss */
+  /* line 61, ../sass/style.scss */
   .current-conditions {
     max-width: 100%;
   }
