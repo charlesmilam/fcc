@@ -52,7 +52,7 @@ function setWeatherFromApi(apiUrl, unitType) {
   $.getJSON(apiUrl, function(data){
     var iconDiv = "<div class='weather-icon'><img src='http://openweathermap.org/img/w/" +
       data.weather[0].icon +
-      ".png' /></div>";
+      ".png' class='img-responsive' alt='weather icon'/></div>";
     var cityDiv = "<div class='city'>" +
       data.name +
       "</div>";

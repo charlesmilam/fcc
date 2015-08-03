@@ -31,7 +31,8 @@ body {
 }
 .weather-icon {
   img {
-    width: 13em;
+    min-height: 150px;
+    margin: auto;
   }
 }
 .city {
