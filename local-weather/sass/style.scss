@@ -22,6 +22,20 @@ body {
     text-align: center;
   }
 }
+.card {
+  perspective: 800;
+  position: relative;
+}
+// .card .flip-imp {
+//   @include transform(rotateY(360deg));
+//   transform-style: preserve-3d;
+//   transition: 3.5s;
+// }
+// .card .flip-met {
+//   @include transform(rotateY(360deg));
+//   transform-style: preserve-3d;
+//   transition: 3.5s;
+// }
 .current-conditions {
   background-color: $primary-color-light;
   border: 1px solid $primary-text-color;

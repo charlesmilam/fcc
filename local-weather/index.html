@@ -22,8 +22,8 @@
     <main>
       <div class="container-fluid">
         <div class="row">
-          <div class="col-xs-12">
-            <div class="well well-lg current-conditions">
+          <div class="col-xs-12 card">
+            <div class="well well-lg current-conditions flipper">
               <div class="city curr-cond-data"></div>
               <div class="weather-icon curr-cond-data"></div>
               <div class="sky curr-cond-data"></div>
@@ -55,10 +55,13 @@
     <script src=".\javascripts\getWeather.js"></script>
     <script type="text/javascript">
       $(document).ready(function() {
+        var currConditions = $(".current-conditions");
         var unitType = "imperial";
+
         setLocation(unitType);
 
         $(".change-unit-type").click(function() {
+          // $(".card").fadeOut(1500)
           if (unitType === "imperial") {
             unitType = "metric";
             $(".unit-type-name").replaceWith(
@@ -73,6 +76,26 @@
             );
             setLocation(unitType);
           }
+
+          // $(".card").fadeIn(3500);
+          // currConditions.css({
+          //   "transform": "rotateY(360deg)",
+          //   "transform-style": "preserve-3d",
+          //   "transition": "3.5s",
+          // });
+          // var newCurr = currConditions.clone(true);
+          // $(".flipper").removeClass("current-conditions").width();
+          // $(".flipper").addClass("current-conditions");
+          // $(".current-conditions").replaceWith($(".current-conditions").width().clone(true));
+          // if ($(".current-conditions").hasClass("flip-imp")) {
+          //   $(".current-conditions").removeClass("flip-imp");
+          //   $(".current-conditions").addClass("flip-met");
+          // }
+          // else {
+          //   $(".current-conditions").removeClass("flip-met");
+          //   $(".current-conditions").addClass("flip-imp");
+          // }
+          // $(".card").toggleClass("flipped");
         })
       });
     </script>

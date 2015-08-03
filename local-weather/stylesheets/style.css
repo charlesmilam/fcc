@@ -23,6 +23,12 @@ body {
 }
 
 /* line 25, ../sass/style.scss */
+.card {
+  perspective: 800;
+  position: relative;
+}
+
+/* line 39, ../sass/style.scss */
 .current-conditions {
   background-color: #CFD8DC;
   border: 1px solid #212121;
@@ -31,30 +37,30 @@ body {
   max-width: 50%;
 }
 
-/* line 32, ../sass/style.scss */
+/* line 46, ../sass/style.scss */
 .curr-cond-data {
   margin-bottom: 0.3em;
 }
 
-/* line 35, ../sass/style.scss */
+/* line 49, ../sass/style.scss */
 .weather-label {
   color: #727272;
 }
 
-/* line 39, ../sass/style.scss */
+/* line 53, ../sass/style.scss */
 .weather-icon i {
   margin: auto;
   font-size: 5em;
 }
 
-/* line 44, ../sass/style.scss */
+/* line 58, ../sass/style.scss */
 .city {
   font-family: "Roboto", sans-serif;
   font-weight: 100;
   font-size: 2em;
 }
 
-/* line 50, ../sass/style.scss */
+/* line 64, ../sass/style.scss */
 .change-unit-type button {
   background: none;
   border: none;
@@ -67,13 +73,13 @@ body {
   cursor: pointer;
   text-decoration: none;
 }
-/* line 61, ../sass/style.scss */
+/* line 75, ../sass/style.scss */
 .change-unit-type button:hover {
   text-decoration: underline;
 }
 
 @media (max-width: 768px) {
-  /* line 68, ../sass/style.scss */
+  /* line 82, ../sass/style.scss */
   .current-conditions {
     max-width: 100%;
   }
