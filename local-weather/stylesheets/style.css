@@ -31,19 +31,29 @@ body {
   max-width: 50%;
 }
 
-/* line 33, ../sass/style.scss */
+/* line 32, ../sass/style.scss */
+.curr-cond-data {
+  margin-bottom: 0.3em;
+}
+
+/* line 35, ../sass/style.scss */
+.weather-label {
+  color: #727272;
+}
+
+/* line 39, ../sass/style.scss */
 .weather-icon img {
   margin: auto;
 }
 
-/* line 37, ../sass/style.scss */
+/* line 43, ../sass/style.scss */
 .city {
   font-family: "Roboto", sans-serif;
   font-weight: 100;
   font-size: 2em;
 }
 
-/* line 43, ../sass/style.scss */
+/* line 49, ../sass/style.scss */
 .change-unit-type button {
   background: none;
   border: none;
@@ -56,13 +66,13 @@ body {
   cursor: pointer;
   text-decoration: none;
 }
-/* line 54, ../sass/style.scss */
+/* line 60, ../sass/style.scss */
 .change-unit-type button:hover {
   text-decoration: underline;
 }
 
 @media (max-width: 768px) {
-  /* line 61, ../sass/style.scss */
+  /* line 67, ../sass/style.scss */
   .current-conditions {
     max-width: 100%;
   }

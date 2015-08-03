@@ -24,10 +24,16 @@ body {
 }
 .current-conditions {
   background-color: $primary-color-light;
-  border: 1px solid #212121;
+  border: 1px solid $primary-text-color;
   text-align: center;
   margin: auto;
   max-width: 50%;
+}
+.curr-cond-data {
+  margin-bottom: 0.3em;
+}
+.weather-label {
+  color: $secondary-text-color;
 }
 .weather-icon {
   img {
