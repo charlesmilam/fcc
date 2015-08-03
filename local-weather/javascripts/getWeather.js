@@ -41,6 +41,9 @@ function setLocation(unitType) {
 function setWeatherFromApi(apiUrl, unitType) {
   var speedSymbol = "";
   var degreesSymbol = "";
+  var dayNight = "";
+  var currHour = new Date().getHours();
+
   if (unitType === "imperial") {
     speedSymbol = " mph";
     tempSymbol = "&#8457;";
@@ -49,9 +52,18 @@ function setWeatherFromApi(apiUrl, unitType) {
     speedSymbol = " km/h";
     tempSymbol = " &#8451;";
   }
+
+  if (currHour > 7 && currHour < 19) {
+    dayNight = "-d";
+  }
+  else {
+    dayNight = "-n";
+  }
+
   $.getJSON(apiUrl, function(data){
     var iconDiv = "<div class='weather-icon curr-cond-data'><i class='owf owf-" +
       data.weather[0].id +
+      dayNight +
       "'></i></div>";
     var cityDiv = "<div class='city curr-cond-data'>" +
       data.name +
