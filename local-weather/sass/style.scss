@@ -36,8 +36,9 @@ body {
   color: $secondary-text-color;
 }
 .weather-icon {
-  img {
+  i {
     margin: auto;
+    font-size: 5em;
   }
 }
 .city {

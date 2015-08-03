@@ -50,9 +50,9 @@ function setWeatherFromApi(apiUrl, unitType) {
     tempSymbol = " &#8451;";
   }
   $.getJSON(apiUrl, function(data){
-    var iconDiv = "<div class='weather-icon curr-cond-data'><img src='http://openweathermap.org/img/w/" +
-      data.weather[0].icon +
-      ".png' class='img-responsive' alt='weather icon' width='150' height=150 /></div>";
+    var iconDiv = "<div class='weather-icon curr-cond-data'><i class='owf owf-" +
+      data.weather[0].id +
+      "'></i></div>";
     var cityDiv = "<div class='city curr-cond-data'>" +
       data.name +
       "</div>";
