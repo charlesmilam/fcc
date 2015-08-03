@@ -1,4 +1,6 @@
 @import "compass";
+@import "palette.sass";
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,900);
 
 $base-primary-color: #eaeaea;
 $base-font: "Roboto", sans-serif;
@@ -6,32 +8,52 @@ $base-font-size: 20px;
 $base-line-height: 30px;
 @include establish-baseline;
 
+body {
+  font-family: $base-font;
+  font-weight: 400;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  color: $primary-text-color;
+}
 .page-title {
-  text-align: center;
+  h1 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    text-align: center;
+  }
 }
 .current-conditions {
+  background-color: $primary-color-light;
+  border: 1px solid #212121;
   text-align: center;
   margin: auto;
-  max-width: 33%;
+  max-width: 50%;
 }
-.weather-icon img {
-  width: 13em;
+.weather-icon {
+  img {
+    width: 13em;
+  }
 }
 .city {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
   font-size: 2em;
 }
-.change-unit-type button {
-  background: none;
-  border: none;
-  display: inline;
-  font: inherit;
-  margin: 0;
-  padding: 0;
-  outline: none;
-  cursor: pointer;
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
+.change-unit-type {
+  button {
+    background: none;
+    border: none;
+    color: $primary-color;
+    display: inline;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 // xsmall devices
