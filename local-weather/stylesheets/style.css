@@ -12,7 +12,7 @@ body {
   font-weight: 400;
   font-size: 20px;
   line-height: 30px;
-  color: #212121;
+  color: #333333;
 }
 
 /* line 19, ../sass/style.scss */
@@ -31,36 +31,40 @@ body {
 /* line 39, ../sass/style.scss */
 .current-conditions {
   background-color: #CFD8DC;
-  border: 1px solid #212121;
+  border: 1px solid #333333;
+  -moz-box-shadow: 0 3px 5px 0 rgba(51, 51, 51, 0.3);
+  -webkit-box-shadow: 0 3px 5px 0 rgba(51, 51, 51, 0.3);
+  box-shadow: 0 3px 5px 0 rgba(51, 51, 51, 0.3);
   text-align: center;
   margin: auto;
   max-width: 50%;
 }
 
-/* line 46, ../sass/style.scss */
+/* line 47, ../sass/style.scss */
 .curr-cond-data {
   margin-bottom: 0.3em;
 }
 
-/* line 49, ../sass/style.scss */
+/* line 50, ../sass/style.scss */
 .weather-label {
   color: #727272;
 }
 
-/* line 53, ../sass/style.scss */
+/* line 54, ../sass/style.scss */
 .weather-icon i {
+  color: #333333;
   margin: auto;
   font-size: 5em;
 }
 
-/* line 58, ../sass/style.scss */
+/* line 60, ../sass/style.scss */
 .city {
   font-family: "Roboto", sans-serif;
   font-weight: 100;
   font-size: 2em;
 }
 
-/* line 64, ../sass/style.scss */
+/* line 66, ../sass/style.scss */
 .change-unit-type button {
   background: none;
   border: none;
@@ -73,13 +77,13 @@ body {
   cursor: pointer;
   text-decoration: none;
 }
-/* line 75, ../sass/style.scss */
+/* line 77, ../sass/style.scss */
 .change-unit-type button:hover {
   text-decoration: underline;
 }
 
 @media (max-width: 768px) {
-  /* line 82, ../sass/style.scss */
+  /* line 84, ../sass/style.scss */
   .current-conditions {
     max-width: 100%;
   }
