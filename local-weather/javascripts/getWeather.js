@@ -98,7 +98,7 @@ function setWeatherFromApi(apiUrl, unitType) {
     $(".sky").replaceWith(skyDiv);
     $(".wind").replaceWith(windDiv);
 
-    setBackgroundToTemp(temp);
+    setBackgroundToTemp(temp, unitType);
   })
   .fail(function(jqxhr, status, error) {
     var err = status + ", " + error;
@@ -113,6 +113,57 @@ function translateWindDirection(deg) {
   return compassPoints[(val % 16)] || "direction not reported";
 }
 
-function setBackgroundToTemp(temp) {
+function setBackgroundToTemp(temp, unitType) {
+  var colors = {
+    veryHot: "#FF5722",
+    hot: "#FF9800",
+    warm: "#FFC107",
+    pleasant: "#FFEB3B",
+    cool: "#CDDC39",
+    chilly: "#8BC34A",
+    cold: "#00BCD4",
+    freezing: "#03A9F4",
+    veryCold: "#2196F3",
+    tooCold: "#3F51B5",
+    wayTooCold: "#673AB7",
+    superCold: "#9C27B0"
+  }
 
+  if (unitType === "metric") {
+    temp = temp * 1.8 + 32;
+  }
+
+  if (temp >= 90) {
+    return $("body").css("background-color", colors.veryHot);
+  }
+  else if (temp >= 80 && temp < 90  ) {
+    return $("body").css("background-color", colors.hot);
+  }
+  else if (temp >= 70 && temp < 80) {
+    return $("body").css("background-color", colors.pleasant);
+  }
+  else if (temp >= 60 && temp < 70) {
+    return $("body").css("background-color", colors.cool);
+  }
+  else if (temp >= 45 && temp < 60) {
+    return $("body").css("background-color", colors.chilly);
+  }
+  else if (temp >= 20 && temp < 45) {
+    return $("body").css("background-color", colors.cold);
+  }
+  else if (temp >= 0 && temp < 20) {
+    return $("body").css("background-color", colors.freezing);
+  }
+  else if (temp >= -10 && temp < 0) {
+    return $("body").css("background-color", colors.veryCold);
+  }
+  else if (temp >= -20 && temp < -10) {
+    return $("body").css("background-color", colors.tooCold);
+  }
+  else if (tmep >= -30 && temp < -20) {
+    return $("body").css("background-color", colors.wayTooCold);
+  }
+  else if (temp < -40) {
+    return $("body").css("background-color", colors.superCold);
+  }
 }

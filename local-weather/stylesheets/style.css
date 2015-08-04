@@ -6,30 +6,29 @@ html {
   line-height: 1.5em;
 }
 
-/* line 12, ../sass/style.scss */
+/* line 11, ../sass/style.scss */
 body {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 20px;
   line-height: 30px;
   color: #333333;
-  background-color: #F44336;
 }
 
-/* line 21, ../sass/style.scss */
+/* line 19, ../sass/style.scss */
 .page-title h1 {
   font-family: "Roboto", sans-serif;
   font-weight: 100;
   text-align: center;
 }
 
-/* line 27, ../sass/style.scss */
+/* line 25, ../sass/style.scss */
 .card {
   perspective: 800;
   position: relative;
 }
 
-/* line 41, ../sass/style.scss */
+/* line 39, ../sass/style.scss */
 .current-conditions {
   background-color: #CFD8DC;
   border: 1px solid #333333;
@@ -42,31 +41,31 @@ body {
   opacity: 0.7;
 }
 
-/* line 50, ../sass/style.scss */
+/* line 48, ../sass/style.scss */
 .curr-cond-data {
   margin-bottom: 0.3em;
 }
 
-/* line 53, ../sass/style.scss */
+/* line 51, ../sass/style.scss */
 .weather-label {
   color: #727272;
 }
 
-/* line 57, ../sass/style.scss */
+/* line 55, ../sass/style.scss */
 .weather-icon i {
   color: #333333;
   margin: auto;
   font-size: 5em;
 }
 
-/* line 63, ../sass/style.scss */
+/* line 61, ../sass/style.scss */
 .city {
   font-family: "Roboto", sans-serif;
   font-weight: 100;
   font-size: 2em;
 }
 
-/* line 69, ../sass/style.scss */
+/* line 67, ../sass/style.scss */
 .change-unit-type button {
   background: none;
   border: none;
@@ -79,13 +78,13 @@ body {
   cursor: pointer;
   text-decoration: none;
 }
-/* line 80, ../sass/style.scss */
+/* line 78, ../sass/style.scss */
 .change-unit-type button:hover {
   text-decoration: underline;
 }
 
 @media (max-width: 768px) {
-  /* line 87, ../sass/style.scss */
+  /* line 85, ../sass/style.scss */
   .current-conditions {
     max-width: 100%;
   }

@@ -6,7 +6,6 @@ $base-primary-color: #eaeaea;
 $base-font: "Roboto", sans-serif;
 $base-font-size: 20px;
 $base-line-height: 30px;
-$hot-color: #F44336;
 @include establish-baseline;
 
 body {
@@ -15,7 +14,6 @@ body {
   font-size: $base-font-size;
   line-height: $base-line-height;
   color: $primary-text-color;
-  background-color: $hot-color;
 }
 .page-title {
   h1 {
