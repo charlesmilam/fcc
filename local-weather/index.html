@@ -6,15 +6,46 @@
     <title>Local Weather | FCC | Charles Milam</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./stylesheets/owfont-regular.min.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" href="./stylesheets/style.css" media="screen">
   </head>
   <body>
-    <p class="city"></p>
-    <p class="temp"></p>
-    <p class="humidity"></p>
-    <p class="sky"></p>
-    <p class="wind-dir"></p>
-    <p class="wind-speed"></p>
+    <header>
+      <div class="container-fluid page-title">
+        <div class="row">
+          <div class="col-xs-12 page-title">
+            <h1>Local Weather</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12 card">
+            <div class="well well-lg current-conditions flipper">
+              <div class="city curr-cond-data"></div>
+              <div class="weather-icon curr-cond-data"></div>
+              <div class="sky curr-cond-data"></div>
+              <div class="temp curr-cond-data">
+                Current Temperature<br>
+              </div>
+              <div class="humidity curr-cond-data">
+                Humidity<br>
+              </div>
+              <div class="wind curr-cond-data">
+                Wind Direction &amp; Speed<br>
+              </div>
+              <div class="change-unit-type">
+                <button type="button" name="change-unit">click here </button>
+                to change units to <span class="unit-type-name">metric</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
     <script
       src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
     </script>
@@ -24,7 +55,48 @@
     <script src=".\javascripts\getWeather.js"></script>
     <script type="text/javascript">
       $(document).ready(function() {
-        setLocation("imperial");
+        var currConditions = $(".current-conditions");
+        var unitType = "imperial";
+
+        setLocation(unitType);
+
+        $(".change-unit-type").click(function() {
+          // $(".card").fadeOut(1500)
+          if (unitType === "imperial") {
+            unitType = "metric";
+            $(".unit-type-name").replaceWith(
+              "<span class='unit-type-name'>imperial</span>"
+            );
+            setLocation(unitType);
+          }
+          else {
+            unitType = "imperial";
+            $(".unit-type-name").replaceWith(
+              "<span class='unit-type-name'>metric</span>"
+            );
+            setLocation(unitType);
+          }
+
+          // $(".card").fadeIn(3500);
+          // currConditions.css({
+          //   "transform": "rotateY(360deg)",
+          //   "transform-style": "preserve-3d",
+          //   "transition": "3.5s",
+          // });
+          // var newCurr = currConditions.clone(true);
+          // $(".flipper").removeClass("current-conditions").width();
+          // $(".flipper").addClass("current-conditions");
+          // $(".current-conditions").replaceWith($(".current-conditions").width().clone(true));
+          // if ($(".current-conditions").hasClass("flip-imp")) {
+          //   $(".current-conditions").removeClass("flip-imp");
+          //   $(".current-conditions").addClass("flip-met");
+          // }
+          // else {
+          //   $(".current-conditions").removeClass("flip-met");
+          //   $(".current-conditions").addClass("flip-imp");
+          // }
+          // $(".card").toggleClass("flipped");
+        })
       });
     </script>
   </body>
