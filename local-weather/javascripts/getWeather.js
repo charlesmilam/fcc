@@ -61,26 +61,33 @@ function setWeatherFromApi(apiUrl, unitType) {
   }
 
   $.getJSON(apiUrl, function(data){
+    var weatherIcon = data.weather[0].id;
+    var city = data.name;
+    var temp = data.main.temp.toFixed(1);
+    var humidity = data.main.humidity;
+    var weatherDescription = data.weather[0].description;
+    var windDirection = translateWindDirection(data.wind.deg);
+    var windSpeed = data.wind.speed.toFixed(1);
     var iconDiv = "<div class='weather-icon curr-cond-data'><i class='owf owf-" +
-      data.weather[0].id +
+      weatherIcon +
       dayNight +
       "'></i></div>";
     var cityDiv = "<div class='city curr-cond-data'>" +
-      data.name +
+      city +
       "</div>";
     var tempDiv = "<div class='temp curr-cond-data'><span class='weather-label'>Current Temperature</span><br>" +
-      data.main.temp.toFixed(1) + tempSymbol +
+      temp + tempSymbol +
       "</div>";
     var humidityDiv = "<div class='humidity curr-cond-data'><span class='weather-label'>Humidity</span><br>" +
-      data.main.humidity +
+      humidity +
       "%</div>";
     var skyDiv = "<div class='sky curr-cond-data'>" +
-      data.weather[0].description +
+      weatherDescription +
       "</div>";
     var windDiv = "<div class='wind curr-cond-data'><span class='weather-label'>Wind Direction &amp; Speed</span><br>" +
-      translateWindDirection(data.wind.deg) +
+      windDirection +
       " @ " +
-      data.wind.speed.toFixed(1) + speedSymbol +
+      windSpeed + speedSymbol +
       "</div>";
 
     console.log(data);
@@ -90,6 +97,8 @@ function setWeatherFromApi(apiUrl, unitType) {
     $(".humidity").replaceWith(humidityDiv);
     $(".sky").replaceWith(skyDiv);
     $(".wind").replaceWith(windDiv);
+
+    setBackgroundToTemp(temp);
   })
   .fail(function(jqxhr, status, error) {
     var err = status + ", " + error;
@@ -102,4 +111,8 @@ function translateWindDirection(deg) {
   var val = Math.floor((deg / 22.5) + 0.5);
 
   return compassPoints[(val % 16)] || "direction not reported";
+}
+
+function setBackgroundToTemp(temp) {
+
 }
