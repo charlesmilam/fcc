@@ -1,4 +1,5 @@
 var WEATHER_API_KEY = "87a3ac98e2e48918db144e9f69eeb057";
+var date = new Date();
 
 function setLocation(unitType) {
   navigator.geolocation.getCurrentPosition(success, error);
@@ -23,7 +24,7 @@ function setLocation(unitType) {
                         "&APPID=" +
                         WEATHER_API_KEY;
 
-              apiForecastUrl = "http://api.openweathermap.org/data/2.5/forcast?q=" +
+              apiForecastUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" +
                         results[i].address_components[0].short_name +
                         "&units=" +
                         unitType +
@@ -31,7 +32,8 @@ function setLocation(unitType) {
                         WEATHER_API_KEY;
 
               // console.log("after: " + apiUrl);
-              setCurrentWeatherFromApi(apiUrl, unitType);
+              setCurrentWeatherFromApi(apiCurrentUrl, unitType);
+              setForecastWeatherFromApi(apiForecastUrl, unitType);
             }
           }
         }
@@ -50,7 +52,7 @@ function setCurrentWeatherFromApi(apiUrl, unitType) {
   var speedSymbol = "";
   var degreesSymbol = "";
   var dayNight = "";
-  var currHour = new Date().getHours();
+  var currHour = date.getHours();
 
   if (unitType === "imperial") {
     speedSymbol = " mph";
@@ -93,6 +95,76 @@ function setCurrentWeatherFromApi(apiUrl, unitType) {
       weatherDescription +
       "</div>";
     var windDiv = "<div class='wind curr-cond-data'><span class='weather-label'>Wind Direction &amp; Speed</span><br>" +
+      windDirection +
+      " @ " +
+      windSpeed + speedSymbol +
+      "</div>";
+
+    console.log(data);
+    $(".weather-icon").replaceWith(iconDiv);
+    $(".city").replaceWith(cityDiv);
+    $(".temp").replaceWith(tempDiv);
+    $(".humidity").replaceWith(humidityDiv);
+    $(".sky").replaceWith(skyDiv);
+    $(".wind").replaceWith(windDiv);
+
+    setBackgroundToTemp(temp, unitType);
+  })
+  .fail(function(jqxhr, status, error) {
+    var err = status + ", " + error;
+    alert("Sorry, the request failed: " + err);
+  });
+}
+
+function setForecastWeatherFromApi(apiForecastUrl, unitType) {
+  var speedSymbol = "";
+  var degreesSymbol = "";
+  var dayNight = "";
+  var currDay = date.toString().slice(0, 10);
+  console.log(currDay);
+  if (unitType === "imperial") {
+    speedSymbol = " mph";
+    tempSymbol = "&#8457;";
+  }
+  else {
+    speedSymbol = " km/h";
+    tempSymbol = " &#8451;";
+  }
+
+  // if (currHour > 7 && currHour < 19) {
+  //   dayNight = "-d";
+  // }
+  // else {
+  //   dayNight = "-n";
+  // }
+
+
+  $.getJSON(apiForecastUrl, function(data){
+    console.log(data);
+    var weatherIcon = data.weather[0].id;
+    var city = data.name;
+    var temp = data.main.temp.toFixed(1);
+    var humidity = data.main.humidity;
+    var weatherDescription = data.weather[0].description;
+    var windDirection = translateWindDirection(data.wind.deg);
+    var windSpeed = data.wind.speed.toFixed(1);
+    var iconDiv = "<div class='weather-icon curr-cond-data'><i class='owf owf-" +
+      weatherIcon +
+      dayNight +
+      "'></i></div>";
+    var cityDiv = "<div class='city forecast-data'>" +
+      city +
+      "</div>";
+    var tempDiv = "<div class='temp forecast-data'><span class='weather-label'>Current Temperature</span><br>" +
+      temp + tempSymbol +
+      "</div>";
+    var humidityDiv = "<div class='humidity forecast-data'><span class='weather-label'>Humidity</span><br>" +
+      humidity +
+      "%</div>";
+    var skyDiv = "<div class='sky forecast-data'>" +
+      weatherDescription +
+      "</div>";
+    var windDiv = "<div class='wind forecast-data'><span class='weather-label'>Wind Direction &amp; Speed</span><br>" +
       windDirection +
       " @ " +
       windSpeed + speedSymbol +
