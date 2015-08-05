@@ -8,14 +8,22 @@ function setLocation(unitType) {
     var long = position.coords.longitude;
     var latlng = new google.maps.LatLng(lat, long);
     var geocoder = new google.maps.Geocoder();
-    var apiUrl = "";
+    var apiCurrentUrl = "";
+    var apiForecastUrl = "";
 
     geocoder.geocode({'latLng': latlng}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         if (results[1]) {
           for (var i = 0; i < results.length; i++) {
             if (results[i].types[0] === "locality") {
-              apiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" +
+              apiCurrentUrl = "http://api.openweathermap.org/data/2.5/weather?q=" +
+                        results[i].address_components[0].short_name +
+                        "&units=" +
+                        unitType +
+                        "&APPID=" +
+                        WEATHER_API_KEY;
+
+              apiForecastUrl = "http://api.openweathermap.org/data/2.5/forcast?q=" +
                         results[i].address_components[0].short_name +
                         "&units=" +
                         unitType +
@@ -23,7 +31,7 @@ function setLocation(unitType) {
                         WEATHER_API_KEY;
 
               // console.log("after: " + apiUrl);
-              setWeatherFromApi(apiUrl, unitType);
+              setCurrentWeatherFromApi(apiUrl, unitType);
             }
           }
         }
@@ -38,7 +46,7 @@ function setLocation(unitType) {
   };
 }
 
-function setWeatherFromApi(apiUrl, unitType) {
+function setCurrentWeatherFromApi(apiUrl, unitType) {
   var speedSymbol = "";
   var degreesSymbol = "";
   var dayNight = "";
