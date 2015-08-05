@@ -117,19 +117,10 @@ function setCurrentWeatherFromApi(apiUrl, unitType) {
 }
 
 function setForecastWeatherFromApi(apiForecastUrl, unitType) {
-  var speedSymbol = "";
   var degreesSymbol = "";
-  var dayNight = "";
   var currDay = date.toString().slice(0, 10);
   console.log(currDay);
-  if (unitType === "imperial") {
-    speedSymbol = " mph";
-    tempSymbol = "&#8457;";
-  }
-  else {
-    speedSymbol = " km/h";
-    tempSymbol = " &#8451;";
-  }
+  unitType === "imperial" ? tempSymbol = "&#8457;" : tempSymbol = " &#8451;";
 
   // if (currHour > 7 && currHour < 19) {
   //   dayNight = "-d";
@@ -141,44 +132,29 @@ function setForecastWeatherFromApi(apiForecastUrl, unitType) {
 
   $.getJSON(apiForecastUrl, function(data){
     console.log(data);
-    var weatherIcon = data.weather[0].id;
-    var city = data.name;
-    var temp = data.main.temp.toFixed(1);
-    var humidity = data.main.humidity;
-    var weatherDescription = data.weather[0].description;
-    var windDirection = translateWindDirection(data.wind.deg);
-    var windSpeed = data.wind.speed.toFixed(1);
-    var iconDiv = "<div class='weather-icon curr-cond-data'><i class='owf owf-" +
+    var weatherIcon = data.list[1].weather[0].id;
+    var tempMin = data.list[1].temp.min.toFixed(1);
+    var tempMax = data.list[1].temp.max.toFixed(1);
+    var iconDiv = "<div class='weather-icon-forecast forecast-data'><i class='owf owf-" +
       weatherIcon +
-      dayNight +
       "'></i></div>";
-    var cityDiv = "<div class='city forecast-data'>" +
-      city +
+    var tempDiv = "<div class='temp-forecast forecast-data'><span class='weather-label'>Current Temperature</span><br>" +
+      tempMin + tempSymbol + " - " + tempMax + tempSymbol
       "</div>";
-    var tempDiv = "<div class='temp forecast-data'><span class='weather-label'>Current Temperature</span><br>" +
-      temp + tempSymbol +
+    var forecastDateDiv = "<div class='forecast-date forecast-data'>" +
+      currDay +
       "</div>";
-    var humidityDiv = "<div class='humidity forecast-data'><span class='weather-label'>Humidity</span><br>" +
-      humidity +
-      "%</div>";
-    var skyDiv = "<div class='sky forecast-data'>" +
-      weatherDescription +
-      "</div>";
-    var windDiv = "<div class='wind forecast-data'><span class='weather-label'>Wind Direction &amp; Speed</span><br>" +
-      windDirection +
-      " @ " +
-      windSpeed + speedSymbol +
-      "</div>";
+    // var tempMaxDiv = "<div class='tempMax forecast-data'><span class='weather-label'>Humidity</span><br>" +
+    //   tempMax +
+    //   "</div>";
+    // var skyDiv = "<div class='sky-forecast forecast-data'>" +
+    //   weatherDescription +
+    //   "</div>";
 
     console.log(data);
-    $(".weather-icon").replaceWith(iconDiv);
-    $(".city").replaceWith(cityDiv);
-    $(".temp").replaceWith(tempDiv);
-    $(".humidity").replaceWith(humidityDiv);
-    $(".sky").replaceWith(skyDiv);
-    $(".wind").replaceWith(windDiv);
-
-    setBackgroundToTemp(temp, unitType);
+    $(".weather-icon-forecast").replaceWith(iconDiv);
+    $(".temp-forecast").replaceWith(tempDiv);
+    $(".forecast-date").replaceWith(forecastDateDiv);
   })
   .fail(function(jqxhr, status, error) {
     var err = status + ", " + error;
