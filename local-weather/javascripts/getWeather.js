@@ -138,18 +138,12 @@ function setForecastWeatherFromApi(apiForecastUrl, unitType) {
     var iconDiv = "<div class='weather-icon-forecast forecast-data'><i class='owf owf-" +
       weatherIcon +
       "'></i></div>";
-    var tempDiv = "<div class='temp-forecast forecast-data'><span class='weather-label'>Current Temperature</span><br>" +
+    var tempDiv = "<div class='temp-forecast forecast-data'>" +
       tempMin + tempSymbol + " - " + tempMax + tempSymbol
       "</div>";
     var forecastDateDiv = "<div class='forecast-date forecast-data'>" +
       currDay +
       "</div>";
-    // var tempMaxDiv = "<div class='tempMax forecast-data'><span class='weather-label'>Humidity</span><br>" +
-    //   tempMax +
-    //   "</div>";
-    // var skyDiv = "<div class='sky-forecast forecast-data'>" +
-    //   weatherDescription +
-    //   "</div>";
 
     console.log(data);
     $(".weather-icon-forecast").replaceWith(iconDiv);
