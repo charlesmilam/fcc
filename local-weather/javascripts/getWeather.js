@@ -124,12 +124,13 @@ function setForecastWeatherFromApi(apiForecastUrl, unitType) {
 
   $.getJSON(apiForecastUrl, function(data){
     console.log(data);
-    $(".card").remove($(".forecast-data"));
     var weatherIcon = 0;
     var tempMin = 0;
     var tempMax = 0;
+    var cardDiv = "<div class='col-md-2 forecast-card'></div>";
     var wellDiv = "<div class='well forecast-conditions'></div>";
 
+    $(".col-md-2.forecast-card").remove();
     for (var i = 1; i <= 5; i++) {
       weatherIcon = data.list[i].weather[0].id;
       tempMin = data.list[i].temp.min.toFixed(1);
@@ -145,7 +146,7 @@ function setForecastWeatherFromApi(apiForecastUrl, unitType) {
         date.toString().slice(0, 10) +
         "</div>";
 
-      $(".card").append(wellDiv);
+      $("#forecast").append(cardDiv).append(wellDiv);
       // wellDiv.append(iconDiv);
       // wellDiv.append(tempDiv);
       // wellDiv.append(forecastDateDiv);
