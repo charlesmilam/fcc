@@ -118,6 +118,8 @@ function setCurrentWeatherFromApi(apiUrl, unitType) {
 
 function setForecastWeatherFromApi(apiForecastUrl, unitType) {
   var degreesSymbol = "";
+  var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  var dayInc = 1;
   // var currDay = date++;
   // console.log(currDay);
   unitType === "imperial" ? tempSymbol = "&#8457;" : tempSymbol = " &#8451;";
@@ -130,9 +132,9 @@ function setForecastWeatherFromApi(apiForecastUrl, unitType) {
     var wellDiv = "";
     var iconDiv = "";
     var tempDiv = "";
-    var forecastDateDiv = "";
-
     var cardDiv = "";
+    // var forecastDateDiv;
+    // var forecastDate = "";
 
     $(".col-md-2.forecast-card").remove();
     for (var i = 1; i <= 5; i++) {
@@ -147,15 +149,15 @@ function setForecastWeatherFromApi(apiForecastUrl, unitType) {
       tempDiv = "<div class='temp-forecast forecast-data'>" +
         tempMin + tempSymbol + " - " + tempMax + tempSymbol
         "</div>";
-      forecastDateDiv = "<div class='forecast-date forecast-data'>" +
-        date.toString().slice(0, 10) +
-        "</div>";
-
+      // TODO: Figure out dates properly formatted going 5 days out
+      // forecastDateDiv = "<div class='forecast-date forecast-data'>" +
+      //   forecastDate +
+      //   "</div>";
       cardDiv = "<div class='col-md-2 forecast-card'>" +
         wellDiv +
         iconDiv +
         tempDiv +
-        forecastDateDiv +
+        // forecastDateDiv +
         "</div>" +
         "</div>";
 
