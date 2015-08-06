@@ -118,37 +118,41 @@ function setCurrentWeatherFromApi(apiUrl, unitType) {
 
 function setForecastWeatherFromApi(apiForecastUrl, unitType) {
   var degreesSymbol = "";
-  var currDay = date.toString().slice(0, 10);
-  console.log(currDay);
+  // var currDay = date++;
+  // console.log(currDay);
   unitType === "imperial" ? tempSymbol = "&#8457;" : tempSymbol = " &#8451;";
-
-  // if (currHour > 7 && currHour < 19) {
-  //   dayNight = "-d";
-  // }
-  // else {
-  //   dayNight = "-n";
-  // }
-
 
   $.getJSON(apiForecastUrl, function(data){
     console.log(data);
-    var weatherIcon = data.list[1].weather[0].id;
-    var tempMin = data.list[1].temp.min.toFixed(1);
-    var tempMax = data.list[1].temp.max.toFixed(1);
-    var iconDiv = "<div class='weather-icon-forecast forecast-data'><i class='owf owf-" +
-      weatherIcon +
-      "'></i></div>";
-    var tempDiv = "<div class='temp-forecast forecast-data'>" +
-      tempMin + tempSymbol + " - " + tempMax + tempSymbol
-      "</div>";
-    var forecastDateDiv = "<div class='forecast-date forecast-data'>" +
-      currDay +
-      "</div>";
+    $(".card").remove($(".forecast-data"));
+    var weatherIcon = 0;
+    var tempMin = 0;
+    var tempMax = 0;
+    var wellDiv = "<div class='well forecast-conditions'></div>";
 
-    console.log(data);
-    $(".weather-icon-forecast").replaceWith(iconDiv);
-    $(".temp-forecast").replaceWith(tempDiv);
-    $(".forecast-date").replaceWith(forecastDateDiv);
+    for (var i = 1; i <= 5; i++) {
+      weatherIcon = data.list[i].weather[0].id;
+      tempMin = data.list[i].temp.min.toFixed(1);
+      tempMax = data.list[i].temp.max.toFixed(1);
+
+      var iconDiv = "<div class='weather-icon-forecast forecast-data'><i class='owf owf-" +
+        weatherIcon +
+        "'></i></div>";
+      var tempDiv = "<div class='temp-forecast forecast-data'>" +
+        tempMin + tempSymbol + " - " + tempMax + tempSymbol
+        "</div>";
+      var forecastDateDiv = "<div class='forecast-date forecast-data'>" +
+        date.toString().slice(0, 10) +
+        "</div>";
+
+      $(".card").append(wellDiv);
+      // wellDiv.append(iconDiv);
+      // wellDiv.append(tempDiv);
+      // wellDiv.append(forecastDateDiv);
+
+    }
+
+
   })
   .fail(function(jqxhr, status, error) {
     var err = status + ", " + error;
