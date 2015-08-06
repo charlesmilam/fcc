@@ -1,4 +1,5 @@
 var WEATHER_API_KEY = "87a3ac98e2e48918db144e9f69eeb057";
+var date = new Date();
 
 function setLocation(unitType) {
   navigator.geolocation.getCurrentPosition(success, error);
@@ -23,7 +24,7 @@ function setLocation(unitType) {
                         "&APPID=" +
                         WEATHER_API_KEY;
 
-              apiForecastUrl = "http://api.openweathermap.org/data/2.5/forcast?q=" +
+              apiForecastUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" +
                         results[i].address_components[0].short_name +
                         "&units=" +
                         unitType +
@@ -31,7 +32,8 @@ function setLocation(unitType) {
                         WEATHER_API_KEY;
 
               // console.log("after: " + apiUrl);
-              setCurrentWeatherFromApi(apiUrl, unitType);
+              setCurrentWeatherFromApi(apiCurrentUrl, unitType);
+              setForecastWeatherFromApi(apiForecastUrl, unitType);
             }
           }
         }
@@ -50,7 +52,7 @@ function setCurrentWeatherFromApi(apiUrl, unitType) {
   var speedSymbol = "";
   var degreesSymbol = "";
   var dayNight = "";
-  var currHour = new Date().getHours();
+  var currHour = date.getHours();
 
   if (unitType === "imperial") {
     speedSymbol = " mph";
@@ -107,6 +109,58 @@ function setCurrentWeatherFromApi(apiUrl, unitType) {
     $(".wind").replaceWith(windDiv);
 
     setBackgroundToTemp(temp, unitType);
+  })
+  .fail(function(jqxhr, status, error) {
+    var err = status + ", " + error;
+    alert("Sorry, the request failed: " + err);
+  });
+}
+
+function setForecastWeatherFromApi(apiForecastUrl, unitType) {
+  var degreesSymbol = "";
+  // var currDay = date++;
+  // console.log(currDay);
+  unitType === "imperial" ? tempSymbol = "&#8457;" : tempSymbol = " &#8451;";
+
+  $.getJSON(apiForecastUrl, function(data){
+    console.log(data);
+    var weatherIcon = 0;
+    var tempMin = 0;
+    var tempMax = 0;
+    var wellDiv = "";
+    var iconDiv = "";
+    var tempDiv = "";
+    var forecastDateDiv = "";
+
+    var cardDiv = "";
+
+    $(".col-md-2.forecast-card").remove();
+    for (var i = 1; i <= 5; i++) {
+      weatherIcon = data.list[i].weather[0].id;
+      tempMin = data.list[i].temp.min.toFixed(1);
+      tempMax = data.list[i].temp.max.toFixed(1);
+
+      wellDiv = "<div class='well forecast-conditions'>";
+      iconDiv = "<div class='weather-icon-forecast forecast-data'><i class='owf owf-" +
+        weatherIcon +
+        "'></i></div>";
+      tempDiv = "<div class='temp-forecast forecast-data'>" +
+        tempMin + tempSymbol + " - " + tempMax + tempSymbol
+        "</div>";
+      forecastDateDiv = "<div class='forecast-date forecast-data'>" +
+        date.toString().slice(0, 10) +
+        "</div>";
+
+      cardDiv = "<div class='col-md-2 forecast-card'>" +
+        wellDiv +
+        iconDiv +
+        tempDiv +
+        forecastDateDiv +
+        "</div>" +
+        "</div>";
+
+      $("#forecast").append(cardDiv);
+    }
   })
   .fail(function(jqxhr, status, error) {
     var err = status + ", " + error;
