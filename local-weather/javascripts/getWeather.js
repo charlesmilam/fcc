@@ -127,26 +127,12 @@ function setForecastWeatherFromApi(apiForecastUrl, unitType) {
     var weatherIcon = 0;
     var tempMin = 0;
     var tempMax = 0;
-    // var cardDiv = "<div class='col-md-2 forecast-card'></div>";
+    var wellDiv = "";
+    var iconDiv = "";
+    var tempDiv = "";
+    var forecastDateDiv = "";
 
-    var wellDiv = "<div class='well forecast-conditions'>";
-    var iconDiv = "<div class='weather-icon-forecast forecast-data'><i class='owf owf-" +
-      weatherIcon +
-      "'></i></div>";
-    var tempDiv = "<div class='temp-forecast forecast-data'>" +
-      tempMin + tempSymbol + " - " + tempMax + tempSymbol
-      "</div>";
-    var forecastDateDiv = "<div class='forecast-date forecast-data'>" +
-      date.toString().slice(0, 10) +
-      "</div>";
-
-    var cardDiv = "<div class='col-md-2 forecast-card'>" +
-      wellDiv +
-      iconDiv +
-      tempDiv +
-      forecastDateDiv +
-      "</div>" +
-      "</div>";
+    var cardDiv = "";
 
     $(".col-md-2.forecast-card").remove();
     for (var i = 1; i <= 5; i++) {
@@ -154,18 +140,27 @@ function setForecastWeatherFromApi(apiForecastUrl, unitType) {
       tempMin = data.list[i].temp.min.toFixed(1);
       tempMax = data.list[i].temp.max.toFixed(1);
 
+      wellDiv = "<div class='well forecast-conditions'>";
+      iconDiv = "<div class='weather-icon-forecast forecast-data'><i class='owf owf-" +
+        weatherIcon +
+        "'></i></div>";
+      tempDiv = "<div class='temp-forecast forecast-data'>" +
+        tempMin + tempSymbol + " - " + tempMax + tempSymbol
+        "</div>";
+      forecastDateDiv = "<div class='forecast-date forecast-data'>" +
+        date.toString().slice(0, 10) +
+        "</div>";
+
+      cardDiv = "<div class='col-md-2 forecast-card'>" +
+        wellDiv +
+        iconDiv +
+        tempDiv +
+        forecastDateDiv +
+        "</div>" +
+        "</div>";
+
       $("#forecast").append(cardDiv);
-
     }
-    // for (var j = 1; j <= 5; j++) {
-    //   cardDiv.append(wellDiv);
-    //   // wellDiv.append(iconDiv);
-    //   // wellDiv.append(tempDiv);
-    //   // wellDiv.append(forecastDateDiv);
-    //
-    // }
-
-
   })
   .fail(function(jqxhr, status, error) {
     var err = status + ", " + error;
