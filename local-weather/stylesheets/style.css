@@ -17,15 +17,8 @@ body {
 
 /* line 19, ../sass/style.scss */
 .page-title h1 {
-  font-family: "Roboto", sans-serif;
   font-weight: 100;
   text-align: center;
-}
-
-/* line 25, ../sass/style.scss */
-.card {
-  perspective: 800;
-  position: relative;
 }
 
 /* line 32, ../sass/style.scss */
@@ -49,23 +42,24 @@ body {
 /* line 44, ../sass/style.scss */
 .weather-label {
   color: #727272;
+  font-weight: 100;
 }
 
-/* line 48, ../sass/style.scss */
+/* line 49, ../sass/style.scss */
 .weather-icon i {
   color: #333333;
   margin: auto;
   font-size: 5em;
 }
 
-/* line 54, ../sass/style.scss */
+/* line 55, ../sass/style.scss */
 .city {
   font-family: "Roboto", sans-serif;
   font-weight: 100;
   font-size: 2em;
 }
 
-/* line 60, ../sass/style.scss */
+/* line 61, ../sass/style.scss */
 .change-unit-type button {
   background: none;
   border: none;
@@ -78,62 +72,70 @@ body {
   cursor: pointer;
   text-decoration: none;
 }
-/* line 71, ../sass/style.scss */
+/* line 72, ../sass/style.scss */
 .change-unit-type button:hover {
   text-decoration: underline;
 }
 
-/* line 76, ../sass/style.scss */
+/* line 77, ../sass/style.scss */
 #forecast {
   margin-left: 8em;
 }
 
-/* line 79, ../sass/style.scss */
+/* line 80, ../sass/style.scss */
 .forecast-title {
   font-weight: 100;
   text-align: center;
 }
 
-/* line 83, ../sass/style.scss */
+/* line 84, ../sass/style.scss */
+.forecast-conditions {
+  border: 1px solid #333333;
+  -moz-box-shadow: 0 3px 5px 0 rgba(51, 51, 51, 0.3);
+  -webkit-box-shadow: 0 3px 5px 0 rgba(51, 51, 51, 0.3);
+  box-shadow: 0 3px 5px 0 rgba(51, 51, 51, 0.3);
+  padding: 0.7em;
+  text-align: center;
+}
+
+/* line 90, ../sass/style.scss */
 .forecast-card {
   max-width: 100%;
   opacity: 0.8;
 }
-/* line 86, ../sass/style.scss */
+/* line 93, ../sass/style.scss */
 .forecast-card .weather-icon-forecast {
-  text-align: center;
   font-size: 3em;
 }
-/* line 90, ../sass/style.scss */
+/* line 96, ../sass/style.scss */
 .forecast-card .temp-forecast {
   font-size: 0.7em;
-  text-align: center;
 }
 
 @media (max-width: 768px) {
-  /* line 98, ../sass/style.scss */
+  /* line 103, ../sass/style.scss */
   .current-conditions {
     max-width: 100%;
   }
 
-  /* line 101, ../sass/style.scss */
+  /* line 106, ../sass/style.scss */
   #forecast {
     margin-left: 0;
   }
 
-  /* line 105, ../sass/style.scss */
+  /* line 110, ../sass/style.scss */
   .forecast-card .temp-forecast {
     font-size: 1.2em;
-    font-weight: 100;
+    font-weight: 400;
   }
 }
 @media (min-width: 768px) and (max-width: 990px) {
-  /* line 113, ../sass/style.scss */
+  /* line 118, ../sass/style.scss */
   #forecast {
-    margin-left: 15em;
+    margin-left: 0;
   }
 
-  /* line 116, ../sass/style.scss */
+  /* line 121, ../sass/style.scss */
   .forecast-card {
     max-width: 50%;
   }

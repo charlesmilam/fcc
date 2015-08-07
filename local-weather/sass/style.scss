@@ -17,15 +17,15 @@ body {
 }
 .page-title {
   h1 {
-    font-family: "Roboto", sans-serif;
+    // font-family: "Roboto", sans-serif;
     font-weight: 100;
     text-align: center;
   }
 }
-.card {
-  perspective: 800;
-  position: relative;
-}
+// .card {
+//   perspective: 800;
+//   position: relative;
+// }
 .current-container {
 
 }
@@ -43,6 +43,7 @@ body {
 }
 .weather-label {
   color: $secondary-text-color;
+  font-weight: 100;
 }
 .weather-icon {
   i {
@@ -80,16 +81,20 @@ body {
   font-weight: 100;
   text-align: center;
 }
+.forecast-conditions {
+  border: 1px solid $primary-text-color;
+  @include single-box-shadow(0, 3px, 5px, 0, rgba(51, 51, 51, 0.3));
+  padding: 0.7em;
+  text-align: center;
+}
 .forecast-card {
   max-width: 100%;
   opacity: 0.8;
   & .weather-icon-forecast {
-    text-align: center;
     font-size: 3em;
   }
   & .temp-forecast {
     font-size: 0.7em;
-    text-align: center;
   }
 }
 
@@ -104,14 +109,14 @@ body {
   .forecast-card {
     & .temp-forecast {
       font-size: 1.2em;
-      font-weight: 100;
+      font-weight: 400;
     }
   }
 }
 // med devices
 @media (min-width: 768px) and (max-width: 990px) {
   #forecast {
-    margin-left: 15em;
+    margin-left: 0;
   }
   .forecast-card {
     max-width: 50%;

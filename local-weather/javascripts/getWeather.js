@@ -153,7 +153,7 @@ function setForecastWeatherFromApi(apiForecastUrl, unitType) {
       // forecastDateDiv = "<div class='forecast-date forecast-data'>" +
       //   forecastDate +
       //   "</div>";
-      cardDiv = "<div class='col-md-2 forecast-card'>" +
+      cardDiv = "<div class='col-xs-6 col-sm-4 col-md-2 forecast-card'>" +
         wellDiv +
         iconDiv +
         tempDiv +
