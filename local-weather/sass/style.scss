@@ -27,7 +27,7 @@ body {
   position: relative;
 }
 .current-container {
-  margin-bottom: 3em;
+
 }
 .current-conditions {
   background-color: $primary-color-light;
@@ -75,6 +75,12 @@ body {
 }
 #forecast {
   margin-left: 8em;
+}
+.forecast-title {
+  text-align: center;
+  h2 {
+
+  }
 }
 // .forecast-card {
 //   margin-left: 3em;

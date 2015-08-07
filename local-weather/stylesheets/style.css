@@ -28,11 +28,6 @@ body {
   position: relative;
 }
 
-/* line 29, ../sass/style.scss */
-.current-container {
-  margin-bottom: 3em;
-}
-
 /* line 32, ../sass/style.scss */
 .current-conditions {
   background-color: #CFD8DC;
@@ -93,8 +88,13 @@ body {
   margin-left: 8em;
 }
 
+/* line 79, ../sass/style.scss */
+.forecast-title {
+  text-align: center;
+}
+
 @media (max-width: 768px) {
-  /* line 87, ../sass/style.scss */
+  /* line 93, ../sass/style.scss */
   .current-conditions {
     max-width: 100%;
   }
