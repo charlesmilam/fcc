@@ -17,25 +17,10 @@ body {
 }
 .page-title {
   h1 {
-    font-family: "Roboto", sans-serif;
     font-weight: 100;
     text-align: center;
   }
 }
-.card {
-  perspective: 800;
-  position: relative;
-}
-// .card .flip-imp {
-//   @include transform(rotateY(360deg));
-//   transform-style: preserve-3d;
-//   transition: 3.5s;
-// }
-// .card .flip-met {
-//   @include transform(rotateY(360deg));
-//   transform-style: preserve-3d;
-//   transition: 3.5s;
-// }
 .current-conditions {
   background-color: $primary-color-light;
   border: 1px solid $primary-text-color;
@@ -50,6 +35,7 @@ body {
 }
 .weather-label {
   color: $secondary-text-color;
+  font-weight: 100;
 }
 .weather-icon {
   i {
@@ -80,9 +66,48 @@ body {
     }
   }
 }
-// xsmall devices
+.forecast-title {
+  font-weight: 100;
+  text-align: center;
+}
+.forecast-conditions {
+  border: 1px solid $primary-text-color;
+  @include single-box-shadow(0, 3px, 5px, 0, rgba(51, 51, 51, 0.3));
+  padding: 0.7em;
+  text-align: center;
+}
+.forecast-card {
+  max-width: 100%;
+  opacity: 0.8;
+  & .weather-icon-forecast {
+    font-size: 3em;
+  }
+  & .temp-forecast {
+    font-size: 0.7em;
+  }
+}
+
+// med devices
 @media (max-width: 768px) {
   .current-conditions {
     max-width: 100%;
+  }
+  #forecast {
+    margin-left: 0;
+  }
+  .forecast-card {
+    & .temp-forecast {
+      font-size: 1.2em;
+      font-weight: 400;
+    }
+  }
+}
+// med devices
+@media (min-width: 768px) and (max-width: 990px) {
+  #forecast {
+    margin-left: 0;
+  }
+  .forecast-card {
+    max-width: 50%;
   }
 }
