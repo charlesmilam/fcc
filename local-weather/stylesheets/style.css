@@ -93,8 +93,19 @@ body {
   text-align: center;
 }
 
+/* line 82, ../sass/style.scss */
+.forecast-card {
+  opacity: 0.8;
+}
+
+/* line 85, ../sass/style.scss */
+.weather-icon-forecast {
+  text-align: center;
+  font-size: 3em;
+}
+
 @media (max-width: 768px) {
-  /* line 93, ../sass/style.scss */
+  /* line 95, ../sass/style.scss */
   .current-conditions {
     max-width: 100%;
   }

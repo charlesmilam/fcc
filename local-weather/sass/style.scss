@@ -78,13 +78,15 @@ body {
 }
 .forecast-title {
   text-align: center;
-  h2 {
-
-  }
 }
-// .forecast-card {
-//   margin-left: 3em;
-// }
+.forecast-card {
+  opacity: 0.8;
+}
+.weather-icon-forecast {
+  text-align: center;
+  font-size: 3em;
+}
+
 // .forecast-card {
 //   max-width: 20%;
 // }
