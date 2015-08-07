@@ -77,22 +77,43 @@ body {
   margin-left: 8em;
 }
 .forecast-title {
+  font-weight: 100;
   text-align: center;
 }
 .forecast-card {
+  max-width: 100%;
   opacity: 0.8;
-}
-.weather-icon-forecast {
-  text-align: center;
-  font-size: 3em;
+  & .weather-icon-forecast {
+    text-align: center;
+    font-size: 3em;
+  }
+  & .temp-forecast {
+    font-size: 0.7em;
+    text-align: center;
+  }
 }
 
-// .forecast-card {
-//   max-width: 20%;
-// }
 // xsmall devices
 @media (max-width: 768px) {
   .current-conditions {
     max-width: 100%;
+  }
+  #forecast {
+    margin-left: 0;
+  }
+  .forecast-card {
+    & .temp-forecast {
+      font-size: 1.2em;
+      font-weight: 100;
+    }
+  }
+}
+// med devices
+@media (min-width: 768px) and (max-width: 990px) {
+  #forecast {
+    margin-left: 15em;
+  }
+  .forecast-card {
+    max-width: 50%;
   }
 }

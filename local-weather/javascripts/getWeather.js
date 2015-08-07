@@ -136,7 +136,7 @@ function setForecastWeatherFromApi(apiForecastUrl, unitType) {
     // var forecastDateDiv;
     // var forecastDate = "";
 
-    $(".col-md-2.forecast-card").remove();
+    $(".col-xs-6.col-sm-4.col-md-2.forecast-card").remove();
     for (var i = 1; i <= 5; i++) {
       weatherIcon = data.list[i].weather[0].id;
       tempMin = data.list[i].temp.min.toFixed(1);
