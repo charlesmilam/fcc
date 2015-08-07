@@ -17,17 +17,9 @@ body {
 }
 .page-title {
   h1 {
-    // font-family: "Roboto", sans-serif;
     font-weight: 100;
     text-align: center;
   }
-}
-// .card {
-//   perspective: 800;
-//   position: relative;
-// }
-.current-container {
-
 }
 .current-conditions {
   background-color: $primary-color-light;
@@ -73,9 +65,6 @@ body {
       text-decoration: underline;
     }
   }
-}
-#forecast {
-  margin-left: 8em;
 }
 .forecast-title {
   font-weight: 100;
