@@ -1,4 +1,4 @@
-var WEATHER_API_KEY = "87a3ac98e2e48918db144e9f69eeb057";
+var neededThing = "87a3ac98e2e48918db144e9f69eeb057";
 var date = new Date();
 
 function setLocation(unitType) {
@@ -22,16 +22,15 @@ function setLocation(unitType) {
                         "&units=" +
                         unitType +
                         "&APPID=" +
-                        WEATHER_API_KEY;
+                        neededThing;
 
               apiForecastUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" +
                         results[i].address_components[0].short_name +
                         "&units=" +
                         unitType +
                         "&APPID=" +
-                        WEATHER_API_KEY;
+                        neededThing;
 
-              // console.log("after: " + apiUrl);
               setCurrentWeatherFromApi(apiCurrentUrl, unitType);
               setForecastWeatherFromApi(apiForecastUrl, unitType);
             }
@@ -118,10 +117,7 @@ function setCurrentWeatherFromApi(apiUrl, unitType) {
 
 function setForecastWeatherFromApi(apiForecastUrl, unitType) {
   var degreesSymbol = "";
-  var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  var dayInc = 1;
-  // var currDay = date++;
-  // console.log(currDay);
+  var tempSymbol = "";
   unitType === "imperial" ? tempSymbol = "&#8457;" : tempSymbol = " &#8451;";
 
   $.getJSON(apiForecastUrl, function(data){
@@ -133,8 +129,6 @@ function setForecastWeatherFromApi(apiForecastUrl, unitType) {
     var iconDiv = "";
     var tempDiv = "";
     var cardDiv = "";
-    // var forecastDateDiv;
-    // var forecastDate = "";
 
     $(".col-xs-6.col-sm-4.col-md-2.forecast-card").remove();
     for (var i = 1; i <= 6; i++) {
@@ -149,15 +143,10 @@ function setForecastWeatherFromApi(apiForecastUrl, unitType) {
       tempDiv = "<div class='temp-forecast forecast-data'>" +
         tempMin + tempSymbol + " - " + tempMax + tempSymbol
         "</div>";
-      // TODO: Figure out dates properly formatted going 5 days out
-      // forecastDateDiv = "<div class='forecast-date forecast-data'>" +
-      //   forecastDate +
-      //   "</div>";
       cardDiv = "<div class='col-xs-6 col-sm-4 col-md-2 forecast-card'>" +
         wellDiv +
         iconDiv +
         tempDiv +
-        // forecastDateDiv +
         "</div>" +
         "</div>";
 
