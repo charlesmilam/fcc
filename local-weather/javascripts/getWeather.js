@@ -1,9 +1,11 @@
-var WEATHER_API_KEY = "87a3ac98e2e48918db144e9f69eeb057";
+var neededThing = "87a3ac98e2e48918db144e9f69eeb057";
 var date = new Date();
 
 function setLocation(unitType) {
+  // get geolocation from browser
   navigator.geolocation.getCurrentPosition(success, error);
 
+  // if geolocation retrieved successfully
   function success(position) {
     var lat = position.coords.latitude;
     var long = position.coords.longitude;
@@ -12,6 +14,7 @@ function setLocation(unitType) {
     var apiCurrentUrl = "";
     var apiForecastUrl = "";
 
+    // reverse lookup of city from lat long via google map api
     geocoder.geocode({'latLng': latlng}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         if (results[1]) {
@@ -22,16 +25,15 @@ function setLocation(unitType) {
                         "&units=" +
                         unitType +
                         "&APPID=" +
-                        WEATHER_API_KEY;
+                        neededThing;
 
               apiForecastUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" +
                         results[i].address_components[0].short_name +
                         "&units=" +
                         unitType +
                         "&APPID=" +
-                        WEATHER_API_KEY;
+                        neededThing;
 
-              // console.log("after: " + apiUrl);
               setCurrentWeatherFromApi(apiCurrentUrl, unitType);
               setForecastWeatherFromApi(apiForecastUrl, unitType);
             }
@@ -42,18 +44,20 @@ function setLocation(unitType) {
       else {console.log("Geocoder failed: " + status)}
     });
   };
-
+  // send alert on error
   function error(error) {
     alert(error);
   };
 }
 
+// set the current weather conditions from openweathermap api
 function setCurrentWeatherFromApi(apiUrl, unitType) {
   var speedSymbol = "";
   var degreesSymbol = "";
   var dayNight = "";
   var currHour = date.getHours();
 
+  // set the speed and temperature symbols based on the unit type
   if (unitType === "imperial") {
     speedSymbol = " mph";
     tempSymbol = "&#8457;";
@@ -62,14 +66,16 @@ function setCurrentWeatherFromApi(apiUrl, unitType) {
     speedSymbol = " km/h";
     tempSymbol = " &#8451;";
   }
-
+  // determine if day or night, for use with displaying the night time
+  // version of owfont icon
   if (currHour > 7 && currHour < 19) {
     dayNight = "-d";
   }
   else {
     dayNight = "-n";
   }
-
+  // get the current weather conditions from openweathermap
+  // create html elements to replace defaults for current conditions card
   $.getJSON(apiUrl, function(data){
     var weatherIcon = data.weather[0].id;
     var city = data.name;
@@ -101,13 +107,14 @@ function setCurrentWeatherFromApi(apiUrl, unitType) {
       "</div>";
 
     console.log(data);
+    // replace default current conditions div with those containing data
     $(".weather-icon").replaceWith(iconDiv);
     $(".city").replaceWith(cityDiv);
     $(".temp").replaceWith(tempDiv);
     $(".humidity").replaceWith(humidityDiv);
     $(".sky").replaceWith(skyDiv);
     $(".wind").replaceWith(windDiv);
-
+    // set the body background color based on the current temp
     setBackgroundToTemp(temp, unitType);
   })
   .fail(function(jqxhr, status, error) {
@@ -115,15 +122,14 @@ function setCurrentWeatherFromApi(apiUrl, unitType) {
     alert("Sorry, the request failed: " + err);
   });
 }
-
+// set the six day forecast based on data from openweathermap api
 function setForecastWeatherFromApi(apiForecastUrl, unitType) {
   var degreesSymbol = "";
-  var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  var dayInc = 1;
-  // var currDay = date++;
-  // console.log(currDay);
+  var tempSymbol = "";
+  // set the temp symbol based on the unit type
   unitType === "imperial" ? tempSymbol = "&#8457;" : tempSymbol = " &#8451;";
 
+  // get the forecast data from openweathermap api
   $.getJSON(apiForecastUrl, function(data){
     console.log(data);
     var weatherIcon = 0;
@@ -133,10 +139,11 @@ function setForecastWeatherFromApi(apiForecastUrl, unitType) {
     var iconDiv = "";
     var tempDiv = "";
     var cardDiv = "";
-    // var forecastDateDiv;
-    // var forecastDate = "";
 
+    // remove any existing forecast elements
     $(".col-xs-6.col-sm-4.col-md-2.forecast-card").remove();
+    // loop thru the forecast, making use of the first six days entries
+    // create forecast card on each pass and add to parent container
     for (var i = 1; i <= 6; i++) {
       weatherIcon = data.list[i].weather[0].id;
       tempMin = data.list[i].temp.min.toFixed(1);
@@ -149,15 +156,10 @@ function setForecastWeatherFromApi(apiForecastUrl, unitType) {
       tempDiv = "<div class='temp-forecast forecast-data'>" +
         tempMin + tempSymbol + " - " + tempMax + tempSymbol
         "</div>";
-      // TODO: Figure out dates properly formatted going 5 days out
-      // forecastDateDiv = "<div class='forecast-date forecast-data'>" +
-      //   forecastDate +
-      //   "</div>";
       cardDiv = "<div class='col-xs-6 col-sm-4 col-md-2 forecast-card'>" +
         wellDiv +
         iconDiv +
         tempDiv +
-        // forecastDateDiv +
         "</div>" +
         "</div>";
 
@@ -170,6 +172,7 @@ function setForecastWeatherFromApi(apiForecastUrl, unitType) {
   });
 }
 
+// takes wind direction in degrees and returns a string compass point
 function translateWindDirection(deg) {
   var compassPoints=["N","NNE","NE","ENE","E","ESE", "SE", "SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"];
   var val = Math.floor((deg / 22.5) + 0.5);
@@ -177,6 +180,7 @@ function translateWindDirection(deg) {
   return compassPoints[(val % 16)] || "direction not reported";
 }
 
+// set the background-color based on the temp
 function setBackgroundToTemp(temp, unitType) {
   var colors = {
     veryHot: "#FF5722",
