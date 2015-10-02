@@ -1,2 +1,3 @@
-# Pomodoro timer for Free Code Camp
-files for the pomodoro project for FCC
+# Pomodoro Zipline Project for Free Code Camp
+
+Files for Pomodoro project for FCC.
