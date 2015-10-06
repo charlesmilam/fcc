@@ -1,6 +1,6 @@
 @import 'settings';
 @import 'foundation';
-// @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,700);
+
 
 
 
@@ -41,3 +41,9 @@
 //   'foundation/components/type',
 //   'foundation/components/offcanvas',
 //   'foundation/components/visibility';
+
+.pomo-progress {
+  height: 300px;
+  margin: 0 auto;
+  width: 300px;
+}
