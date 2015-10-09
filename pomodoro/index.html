@@ -6,6 +6,7 @@
     <title>Pomodoro | Charles Milam</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="stylesheets/app.css" />
+    <link rel="stylesheet" href="stylesheets/TimeCircles.css">
   </head>
   <body>
     <header>
@@ -18,7 +19,12 @@
     <main>
       <div class="row progress-container">
         <div class="small-12 small-centered columns text-center">
-          <div class="pomo-progress" id="pomo-progress"></div>
+          <div class="pomo-progress" id="pomo-progress" data-timer="1500"></div>
+          <div class="pomo-controls">
+            <button class="btn btn-success start">Start</button>
+            <button class="btn btn-danger stop">Stop</button>
+            <button class="btn btn-info restart">Restart</button>
+          </div>
         </div>
       </div>
     </main>
@@ -29,7 +35,7 @@
     <script src="bower_components/foundation/js/vendor/modernizr.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/foundation/js/foundation.min.js"></script>
-    <script src="bower_components/progressbar.js/dist/progressbar.min.js"></script>
+    <script src="js/TimeCircles.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>
