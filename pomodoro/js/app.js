@@ -12,5 +12,11 @@ $("#pomo-progress").TimeCircles({
   fg_width: 0.05,
   bg_width: 0.025,
   total_duration: "Minutes",
-  direction: "Counter-clockwise"
+  direction: "Counter-clockwise",
+  time: {
+    Days: {show: false},
+    Hours: {show: false},
+    Minutes: {color: "#555"},
+    Seconds: {show: false}
+  }
 });
