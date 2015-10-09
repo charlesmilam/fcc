@@ -14,10 +14,11 @@ $("#pomo-progress").on("click", function() {
   var pomodoro = new Date();
   pomodoro.setMinutes(100);
   var count = 1;
-  var minutes = new Date().getMinutes();
+
   setInterval(function() {
-    console.log('minutes', minutes / 60);
-    circle.animate(1.0, function() {
+    var minute = new Date().getMinutes();
+    console.log('minutes', minute / 60);
+    circle.animate(minute / 60, function() {
       console.log("animate fired", count);
       count++;
       // circle.animate(0);
@@ -31,6 +32,6 @@ $("#pomo-progress").on("click", function() {
 //       pomodoro.setMinutes(pomodoro.getMinutes() - 1);
 //       console.log("minutes", pomodoro.getMinutes());
 //   });
-  }, 1000);
+  }, 60000);
   // circle.animate(1);
 });
