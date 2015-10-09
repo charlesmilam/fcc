@@ -16,7 +16,20 @@ $("#pomo-progress").TimeCircles({
   time: {
     Days: {show: false},
     Hours: {show: false},
-    Minutes: {color: "#555"},
+    Minutes: {color: "#4CAF50"},
     Seconds: {show: false}
   }
+});
+
+// TimeCircles controls
+$(".start").click(function(){
+  $("#pomo-progress").TimeCircles().start();
+});
+
+$(".stop").click(function(){
+  $("#pomo-progress").TimeCircles().stop();
+});
+
+$(".restart").click(function(){
+  $("#pomo-progress").TimeCircles().restart();
 });
