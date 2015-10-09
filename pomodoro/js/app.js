@@ -10,8 +10,8 @@ $("#pomo-progress").TimeCircles({
   circle_bg_color: "#555555",
   use_background: true,
   fg_width: 0.05,
-  bg_width: 0.025,
-  total_duration: "Minutes",
+  bg_width: 1,
+  total_duration: 1500,
   direction: "Counter-clockwise",
   time: {
     Days: {show: false},
