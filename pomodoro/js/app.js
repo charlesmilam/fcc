@@ -7,7 +7,7 @@ $("#pomo-progress").TimeCircles({
   start: false,
   animation: "smooth",
   count_past_zero: false,
-  circle_bg_color: "#555555",
+  circle_bg_color: "#9e9e9e",
   use_background: true,
   fg_width: 0.05,
   bg_width: 1,
